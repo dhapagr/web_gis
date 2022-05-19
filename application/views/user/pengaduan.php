@@ -24,7 +24,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-            <h2>SAMPAIKAN PENGADUAN ANDA</h2>
+            <h2>SAMPAIKAN PENGADUAN ANDAsss</h2>
             <h4><p class="mb-0">Jika ada permasalahan terkait kecelakaan atau lalu lintas jalan Kota Madiun</p></h4>
             <div class="row process process-shapes process-shapes-always-animate my-5">
                 <div class="process-step col-lg-4 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
