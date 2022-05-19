@@ -28,7 +28,7 @@
                 <img style="width:150px; height:150px;" src="<?php echo base_url("assets"); ?>/user/img/Logo-DIR-Lantas-Polri.png" class="img-fluid" alt="">
               </div><br>
               <div class="section-title">
-                <h2>SISTEM INFORMASI GEOGRAFIS ggggggg</h2>
+                <h2>SISTEM INFORMASI GEOGRAFIS</h2>
               </div>
               <div style="text-align: center;">
                 <h1>Pemetaan Titik Rawan Kecelakaan Kota Madiun</h1>
