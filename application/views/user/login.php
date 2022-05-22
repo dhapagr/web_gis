@@ -36,14 +36,19 @@
                         </div>
                     </div><br>
                     <?= $this->session->flashdata('sukses_registrasi')?>
-                    <form class="myform">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
+                    <form class="myform" action="<?= base_url('user/login/auth')?>" enctype="multipart/form-data" method="POST">
+                        <div class="form-group mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <?= form_error('email', '<div class="text-danger small ml-2" style="margin-top: -20px;">', '</div>') ?>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <div class="d-flex align-items-center">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                                <i class="fa fa-eye toggle-password" style="cursor: pointer; margin-left: -30px; margin-bottom: 20px;"></i>
+                            </div>
+                            <?= form_error('password', '<div class="text-danger small ml-2 mb-2" style="margin-top: -20px;">', '</div>') ?>
                         </div>
-                        <div class="row">
+                        <div class="d-flex justify-content-between">
                             <div class="col-md-6 col-12">
                                 <div class="form-group form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -53,7 +58,7 @@
                             <div class="col-md-6 col-12 bn"><a href="<?php echo base_url("user/register"); ?>">Register</a></div>
                         </div>
                         <div class="form-group mt-3 d-flex justify-content-center">
-                            <button type="button" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Login</small></button>
+                            <button type="submit" class="btn btn-block btn-primary btn-lg"><small class="mr-1"><i class="far fa-user"></i>Login</small></button>
                         </div>
                     </form>
                 </div>
@@ -68,6 +73,19 @@
   
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("body").on('click', '.toggle-password', function() {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            const type = $('#password').attr('type') === 'password' ? 'text' : 'password';
+            $('#password').attr('type', type);
+        });
+
+        setTimeout(function(){
+            $('#alert').remove();
+        }, 5000);
+    </script>
 
 </body>
 
