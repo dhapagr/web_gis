@@ -67,8 +67,8 @@
         </div>
         <div class="card-body">
           <div class="row">
-              <div class="col-md-4">
-                  <h6>FILTER KECAMATAN</h6>
+              <div class="col-md-6">
+                  <h3>FILTER KECAMATAN</h3>
                   <fieldset class="form-group">
                       <div class="input-group">
                           <select class="custom-select" id='kecamatan' name="kecamatan" required>
@@ -80,8 +80,8 @@
                       </div>
                   </fieldset>
               </div>
-              <div class="col-md-4">
-                  <h6>FILTER KELURAHAN</h6>
+              <div class="col-md-6">
+                  <h3>FILTER KELURAHAN</h3>
                   <fieldset class="form-group">
                       <div class="input-group">
                           <select id='kelurahan' name="kelurahan" class="custom-select" required>
@@ -90,23 +90,11 @@
                       </div>
                   </fieldset>
               </div>
-              <div class="col-md-4">
-                  <h6>FILTER STATUS</h6>
-                  <fieldset class="form-group">
-                      <div class="input-group">
-                          <select class="custom-select" id='status' name="status" required>
-                              <?php foreach ($data_kecamatan as $k) :?>
-                                  <option value="" disabled selected hidden>Pilih Status</option>
-                                  <option value="<?php echo $k['id_kecamatan'] ?>"><?php echo$k['nama_kecamatan'] ?></option>
-                              <?php endforeach ?>
-                          </select>
-                      </div>
-                  </fieldset>
-              </div>
+             
           </div>
           <hr>
         </div>
-        <div id="map" style="height: 600px;"></div>
+        <div id="map" style="height: 400px;"></div>
         <!-- <script>
 
           var map = L.map('map').setView([51.505, -0.09], 13);
@@ -320,7 +308,7 @@
       var kec = $('#kecamatan').val();			
               if (kec != '') {
         $.ajax({
-          url: "<?php echo base_url('admin/peta_kecelakaan/getKel') ?>",
+          url: "<?php echo base_url('user/webgis/getKel') ?>",
           type: "POST",
           data: {
             kecamatan: kec
@@ -342,7 +330,7 @@
        
         if (data != '') {
             $.ajax({
-                url: "<?php echo base_url('admin/peta_kecelakaan/filter_kecamatan/') ?>"+data,
+                url: "<?php echo base_url('user/webgis/filter_kecamatan/') ?>"+data,
                 success: function (data) {
                   var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
                     var redMarker = L.icon({
@@ -396,7 +384,7 @@
       var data = $('#kelurahan').val();
         if (data != '') {
             $.ajax({
-                url: "<?php echo base_url('admin/peta_kecelakaan/filter_kelurahan/') ?>"+data,
+                url: "<?php echo base_url('user/webgis/filter_kelurahan/') ?>"+data,
                 success: function (data) {
                   var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
                     var redMarker = L.icon({

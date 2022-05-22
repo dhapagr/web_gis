@@ -21,20 +21,42 @@ class Webgis extends CI_Controller {
 	public function __construct()
 	{
         parent::__construct();
-        $this->load->model('admin_model');
-		// if ($this->session->userdata("id_user") == NULL) 
-		// {
-		// 	redirect('admin/welcome');
-		// }
+        $this->load->model('user_model');
+		
 	}
 	public function index()
 	{
-		// $data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
-		$data['data_kecelakaan'] 	= $this->admin_model->tampil_data_kecelakaan()->result_array();
+		// $data['data_user']			= $this->user_model->get_dataById($id_user);
+		$data['data_lokasi'] 		= $this->user_model->tampil_data_lokasi()->result_array();
+		$data['data_kecelakaan'] 	= $this->user_model->tampil_data_kecelakaan()->result_array();
 		$data['data_kecamatan'] 	= $this->db->get('tb_kecamatan')->result_array();
 		$this->load->view('user/template/header');
 		$this->load->view('user/webgis', $data);
 		$this->load->view('user/template/footer');
+	}
+	public function filter_kecamatan($kecelakaan)
+	{
+		$data['data_kecelakaan']	= $this->user_model->get_filter_kec($kecelakaan)->result_array();
+		
+		echo json_encode($data); 
+	}
+	public function filter_kelurahan($kecelakaan)
+	{
+		$data['data_kecelakaan'] 	= $this->user_model->get_filter_kel($kecelakaan)->result_array();
+		echo json_encode($data); 
+	}
+	public function getKel()
+	{
+		$id_kecamatan = $this->input->post('kecamatan');
+		if ($id_kecamatan != null) {
+			$kelurahan = $this->user_model->get_kelurahan_where($id_kecamatan)->result_array();
+			$drop = '<option hidden>Pilih Kelurahan</option>';
+			foreach ($kelurahan as $kel) {
+				$drop = $drop . '<option value="' . $kel['id_kelurahan'] . '">' . $kel['nama_kelurahan'] . '</option>';
+			}
+			echo $drop;
+		}
+
+		// var_dump($filterCity);
 	}
 }
