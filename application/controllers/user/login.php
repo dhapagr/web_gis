@@ -10,6 +10,8 @@ class Login extends CI_Controller {
 	}
 	public function index()
     {
+		$this->session->sess_destroy();
+
         $this->load->view('user/template/header');
 		$this->load->view('user/login');
 		$this->load->view('user/template/footer');
@@ -40,6 +42,7 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('email', $auth->email);
                 $this->session->set_userdata('role_user', $auth->role_user);
                 $this->session->set_userdata('id_user', $auth->id_user);
+				$this->session->set_userdata('nama', $auth->nama);
 
 				redirect('user/pengaduan/');
 			}

@@ -7,9 +7,6 @@ class Berita extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('admin_model');
-		if($this->session->userdata('role_user') != 'umum'){
-			redirect('user/login');
-		}
 	}
 
 	public function index()

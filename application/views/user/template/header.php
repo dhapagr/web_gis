@@ -83,10 +83,35 @@
         <li><a class="nav-link scrollto" href="<?php echo base_url("user/webgis"); ?>">Webgis</a></li>
         <li><a class="nav-link scrollto" href="<?php echo base_url("user/berita"); ?>">Portal Berita</a></li>
         <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
-        <li><a  href="<?php echo base_url("user/login"); ?>">Login</a></li>
+        <?php if($this->session->userdata('nama') == ''):?>
+          <li><a  href="<?php echo base_url("user/login"); ?>">Login</a></li>
+        <?php else: ?>
+          <li>
+            <a class="nav-link scrollto" href="javascript:js_logout();">
+              <?=$this->session->userdata('nama')?>
+            </a>
+          </li>
+        <?php endif; ?>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
-
   </div>
+  <script>
+    function js_logout(){
+      Swal.fire({
+        title: 'Logout',
+        text: "Apakah Anda ingin keluar ?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Iya',
+        cancelButtonText: 'Tidak'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href="<?= base_url('user/login/logout_umum')?>";
+        }
+      });
+    }
+  </script>
 </header><!-- End Header -->

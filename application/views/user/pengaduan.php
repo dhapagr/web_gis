@@ -63,7 +63,9 @@
         <div class="container" data-aos="zoom-in">
             <div class="row">
                 <div class="text-center" class="col-lg-3 cta-btn2-container text-center">
+                    <?php if($this->session->userdata('nama') == ''):?>
                     <a class="cta-btn2 align-middle w-600" href="<?php echo base_url('user/login'); ?>">BUAT PENGADUAN</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
