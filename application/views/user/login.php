@@ -35,6 +35,7 @@
                             <div class="col-3"><div class="line r"></div></div>
                         </div>
                     </div><br>
+                    <?= $this->session->flashdata('sukses_registrasi')?>
                     <form class="myform">
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Email">
