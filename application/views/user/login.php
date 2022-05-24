@@ -36,6 +36,7 @@
                         </div>
                     </div><br>
                     <?= $this->session->flashdata('sukses_registrasi')?>
+                    <script src="https://www.google.com/recaptcha/api.js"></script>
                     <form class="myform" action="<?= base_url('user/login/auth')?>" enctype="multipart/form-data" method="POST">
                         <div class="form-group mb-3">
                             <input type="email" class="form-control" name="email" placeholder="Email">
@@ -47,6 +48,9 @@
                                 <i class="fa fa-eye toggle-password" style="cursor: pointer; margin-left: -30px; margin-bottom: 20px;"></i>
                             </div>
                             <?= form_error('password', '<div class="text-danger small ml-2 mb-2" style="margin-top: -20px;">', '</div>') ?>
+                        </div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <?= $captcha ?>
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="col-md-6 col-12">

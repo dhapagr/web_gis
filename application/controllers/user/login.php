@@ -12,8 +12,13 @@ class Login extends CI_Controller {
     {
 		$this->session->sess_destroy();
 
+		$data = array(
+			'captcha' => $this->recaptcha->getWidget(),
+			'script_captcha'=> $this->recaptcha->getScriptTag()
+    	);
+
         $this->load->view('user/template/header');
-		$this->load->view('user/login');
+		$this->load->view('user/login', $data);
 		$this->load->view('user/template/footer');
     }
 
@@ -23,29 +28,42 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password','Password','required');
 		$this->form_validation->set_message('required', '{field} tidak boleh kosong!');
 
-		if($this->form_validation->run() == FALSE)
+		$recaptcha	= $this->input->post('g-recaptcha-response');
+		$response 	= $this->recaptcha->verifyResponse($recaptcha);
+
+		if(!isset($response['success']) || $response['success'] <> FALSE)
 		{
-			$this->load->view('user/template/header');
-			$this->load->view('user/login');
-			$this->load->view('user/template/footer');
-		}else{
-			$auth = $this->auth_model->cek_login_umum();
-
-			if($auth == null){
-				$this->session->set_flashdata('sukses_registrasi',
-					'<script>
-						Swal.fire("Gagal","Password yang Anda masukkan salah!","error")
-					</script>'
-				);
-				redirect('user/login');
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('user/template/header');
+				$this->load->view('user/login');
+				$this->load->view('user/template/footer');
 			}else{
-				$this->session->set_userdata('email', $auth->email);
-                $this->session->set_userdata('role_user', $auth->role_user);
-                $this->session->set_userdata('id_user', $auth->id_user);
-				$this->session->set_userdata('nama', $auth->nama);
+				$auth = $this->auth_model->cek_login_umum();
 
-				redirect('user/pengaduan/');
+				if($auth == null){
+					$this->session->set_flashdata('sukses_registrasi',
+						'<script>
+							Swal.fire("Gagal","Password yang Anda masukkan salah!","error")
+						</script>'
+					);
+					redirect('user/login');
+				}else{
+					$this->session->set_userdata('email', $auth->email);
+					$this->session->set_userdata('role_user', $auth->role_user);
+					$this->session->set_userdata('id_user', $auth->id_user);
+					$this->session->set_userdata('nama', $auth->nama);
+
+					redirect('user/pengaduan/');
+				}
 			}
+		}else {
+			$this->session->set_flashdata('sukses_registrasi',
+				'<script>
+					Swal.fire("Gagal","Captcha wajib diisi!","error")
+				</script>'
+			);
+			redirect('user/login');
 		}
 	}
 
