@@ -19,7 +19,7 @@ function LivIconsEvoDefaults() {
 
 		// pathToFolder: '../assets/admin/fonts/LivIconsEvo/svg/', //the path from root of your site to folder with icons. Also may be as URL, like 'http://yoursite.com/path/to/LivIconsEvo/svg/'
 
-		pathToFolder: 'http://localhost/proyek/assets/admin/fonts/LivIconsEvo/svg/', //the path from root of your site to folder with icons. Also may be as URL, like 'http://yoursite.com/path/to/LivIconsEvo/svg/'
+		pathToFolder: 'http://localhost/web_gis/assets/admin/fonts/LivIconsEvo/svg/', //the path from root of your site to folder with icons. Also may be as URL, like 'http://yoursite.com/path/to/LivIconsEvo/svg/'
 		name: 'bell.svg', //the default icon name
 
 		//visualization options
