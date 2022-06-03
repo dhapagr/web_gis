@@ -40,4 +40,29 @@ class User_model extends CI_Model
 		$this->db->where('id_kecamatan', $id_kecamatan);
 		return $this->db->get();
 	}
+
+	function get_pengaduan($number,$offset)
+	{
+		$this->db->select('*');
+		$this->db->where('status_pengaduan', 1);
+		$this->db->order_by("tanggal_pengaduan", "desc");
+		return $this->db->get('tb_pengaduan',$number,$offset)->result_array();
+	}
+
+	function get_data_user($id_user)
+	{
+		$this->db->select('*');
+		$this->db->from('login_session');
+		$this->db->where('id_user', $id_user);
+		return $this->db->get()->row();
+	}
+
+	function get_gambar_pengaduan($id_pengaduan)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_gambar_pengaduan');
+		$this->db->where('id_pengaduan', $id_pengaduan);
+		$this->db->group_by('id_pengaduan');
+		return $this->db->get()->result_array();
+	}
 }

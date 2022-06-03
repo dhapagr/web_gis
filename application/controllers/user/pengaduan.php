@@ -6,7 +6,9 @@ class Pengaduan extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('user_model');
+		date_default_timezone_set('Asia/Jakarta');
+		$this->load->library('pagination');
 	}
 
 	public function index()
@@ -16,16 +18,63 @@ class Pengaduan extends CI_Controller {
 			$data = [
 				'subjek' 	=> $riwayat_input['subjek'],
 				'pesan'		=> $riwayat_input['pesan'],
-				'nama' 		=> $riwayat_input['nama'],
-				'email' 	=> $riwayat_input['email'],
+				'lokasi' 	=> $riwayat_input['lokasi'],
 			];
 		}else{
-			$data = ['subjek' => '','pesan' => '','nama' => '','email' => ''];
+			$data = ['subjek' => '','pesan' => '','lokasi' => ''];
 		}
 		$this->session->set_flashdata('input', $data);
+ 
+        // Membuat Style pagination untuk BootStrap v4
+      	$config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
 
+		// pengaturan pagination 
+		$config['base_url'] = base_url('user/pengaduan/index/');
+		$config['total_rows'] = count($this->db->get_where('tb_pengaduan', ['status_pengaduan' => 1])->result_array());
+		$config['per_page'] = 6;
+		$choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+		$from = $this->uri->segment(4);
+		$this->pagination->initialize($config);		
+
+		$data_pengaduan = $this->user_model->get_pengaduan($config['per_page'],$from);
+		foreach($data_pengaduan as $pengaduan):
+			$dt_pengaduan[] = array(
+				'id_pengaduan' 		=> $pengaduan['id_pengaduan'],
+				'id_user'			=> $pengaduan['id_user'],
+				'lokasi' 			=> $pengaduan['lokasi'],
+				'subjek' 			=> $pengaduan['subjek'],
+				'pesan' 			=> $pengaduan['pesan'],
+				'tanggal_pengaduan' => $pengaduan['tanggal_pengaduan'],
+				'tanggal_jawab' 	=> $pengaduan['tanggal_jawab'],
+				'jawaban' 			=> $pengaduan['jawaban'],
+				'status_pengaduan' 	=> $pengaduan['status_pengaduan'],
+				'data_user' 		=> $this->user_model->get_data_user($pengaduan['id_user']),
+				'gambar_pengaduan'	=> $this->user_model->get_gambar_pengaduan($pengaduan['id_pengaduan']),
+
+			);
+		endforeach;
+		$data['dt_pengaduan'] = $dt_pengaduan;
+		// echo "<pre>"; print_r($data); exit;
         $this->load->view('user/template/header');
-		$this->load->view('user/pengaduan');
+		$this->load->view('user/pengaduan', $data);
 		$this->load->view('user/template/footer');
     }
 
@@ -35,14 +84,22 @@ class Pengaduan extends CI_Controller {
 		if($user != 'umum'){
 			redirect('user/pengaduan/');
 		}else{
-			$subjek	= $this->input->post('subjek');
-			$pesan	= $this->input->post('pesan');
-			$nama	= $this->input->post('nama');
-			$email	= $this->input->post('email');
+			$subjek		= $this->input->post('subjek');
+			$pesan		= $this->input->post('pesan');
+			$lokasi		= $this->input->post('lokasi');
+			$tanggal 	= date('Y-m-d');
+			$id_user	= $this->session->userdata('id_user');
 
-			$data = ['subjek'=> $subjek,'pesan'=> $pesan,'nama'=> $nama,'email'=> $email];
+			$data = [
+				'id_user'			=> $id_user,
+				'subjek'			=> $subjek,
+				'pesan'				=> $pesan,
+				'lokasi'			=> $lokasi,
+				'tanggal_pengaduan'	=> $tanggal, 
+				'status_pengaduan' 	=> 0
+			];
 
-			if($subjek != '' && $pesan != '' && $nama != '' && $email != ''){
+			if($subjek != '' && $pesan != '' && $lokasi != ''){
 				$this->db->insert('tb_pengaduan', $data);
 				$id_pengaduan = $this->db->insert_id();
 
@@ -134,4 +191,5 @@ class Pengaduan extends CI_Controller {
 			}
 		}
 	}
+
 }

@@ -16,6 +16,9 @@
   }
   
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <body>
   
 <main id="main">
@@ -59,6 +62,8 @@
         </div>
       </div>
     </section>
+
+    <!-- form pengaduan -->
     <section id="cta" class="cta">
         <div class="container" data-aos="zoom-in">
             <div class="row">
@@ -72,7 +77,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <span><b class="text-secondary">Form Pengaduan</b></span>
+                                    <h4><b class="text-secondary">Form Pengaduan</b></span>
                                 </div>
                                 <div class="card-body">
                                     <form action="<?= base_url('user/pengaduan/post_pengaduan/')?>" method="POST" enctype="multipart/form-data">
@@ -83,16 +88,12 @@
                                                     <input id="subjek" class="form-control" type="text" name="subjek" value="<?= $riw_input['subjek']?>">
                                                 </div>
                                                 <div class="form-group mb-3" align="left">
-                                                    <label for="my-input">Text</label>
+                                                    <span>Pesan</span>
                                                     <textarea name="pesan" class="form-control" placeholder="Ketik disini ..." style="height: 150px;"><?= $riw_input['pesan']?></textarea>
                                                 </div>
                                                 <div class="form-group mb-3" align="left">
-                                                    <span>Nama</span>
-                                                    <input class="form-control" type="text" name="nama" value="<?= $riw_input['nama'] ? $riw_input['nama'] : $this->session->userdata('nama')?>">
-                                                </div>
-                                                <div class="form-group mb-3" align="left">
-                                                    <span>Email</span>
-                                                    <input class="form-control" type="text" name="email" value="<?= $riw_input['email'] ? $riw_input['email'] : $this->session->userdata('email')?>">
+                                                    <span>Lokasi</span>
+                                                    <input class="form-control" type="text" name="lokasi" value="<?= $riw_input['lokasi']?>">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -125,6 +126,89 @@
             </div>
         </div>
     </section>
+
+    <!-- daftar pengaduan -->
+    <section id="cta" class="ctalogin"></section>
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>DAFTAR PENGADUAN</h2>
+            </div>
+            <div class="row" id="pagination" autofocus>
+                <?php foreach($dt_pengaduan as $i => $pengaduan): ?>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow">
+                        <div class="d-flex justify-content-between">
+                            <div class="col-2 text-center bg-primary text-white">
+                                <h3><?= date('d', strtotime($pengaduan['tanggal_pengaduan']))?></h1>
+                                <h6><?= date('m-Y', strtotime($pengaduan['tanggal_pengaduan']))?></h6>
+                            </div>
+                            <div class="col-10 d-flex align-items-center justify-content-center">
+                                <h4 class="text-secondary text-center"><b><?=$pengaduan['subjek']?></b></h4>
+                            </div>
+                        </div>
+                        <div id="sekilas<?=$i?>" class="collapse in" style="text-align: justify; margin-left: 20px; margin-right: 20px; margin-top: 10px;">
+                            <?php if (strlen($pengaduan['pesan']) > 10){
+                                $str = substr($pengaduan['pesan'], 0, 100) . '...';
+                            } echo "<span class='text-secondary'>".$str."</span>";?>
+                        </div>
+                        <div id="demo<?=$i?>" class="collapse">
+                            <div style="margin-left: 20px; margin-right: 20px; margin-top: 10px;">
+                                <div style="text-align: justify; margin-bottom: 10px;">
+                                    <span class="text-secondary"><?=$pengaduan['pesan']?></span>
+                                </div>
+                                <?php if($pengaduan['gambar_pengaduan'] != ""): 
+                                    foreach($pengaduan['gambar_pengaduan'] as $gambar): ?>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="col-8">
+                                            <img src="<?=base_url('./assets/user/img/gb_pengaduan/'.$gambar['gambar'])?>" width="100%" class="mb-3" alt="">
+                                        </div>
+                                    </div>
+                                <?php endforeach; endif; ?>
+                                <div>
+                                    <i class="fas fa-user-circle text-secondary"></i>
+                                    <label class="text-secondary"> Pelapor: </label>
+                                    <span class="text-primary"><?=$pengaduan['data_user']->nama?></span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-venus-mars text-secondary"></i>
+                                    <label class="text-secondary"> Gender: </label>
+                                    
+                                    <span class="text-primary"><?=$pengaduan['data_user']->gender == "L" ? "Pria" : "Wanita"?></span>
+                                </div>
+                                <div>
+                                    <i class="fas fa-compass text-secondary"></i>
+                                    <label class="text-secondary"> Lokasi: </label>
+                                    <span class="text-primary"><?=$pengaduan['lokasi']?></span>
+                                </div>
+                                <div>
+                                    <i class="fa fa-info-circle text-secondary"></i>
+                                    <label class="text-secondary"> Status: </label>
+                                    <span class="text-primary"><?=$pengaduan['jawaban'] == "" ? "Belum ditanggapi" : "Sudah ditanggapi"?></span>
+                                </div>
+                                <div>
+                                    <i class="fa fa-check-circle text-secondary"></i>
+                                    <label class="text-secondary"> Jawaban: </label>
+                                </div>
+                                <?php if($pengaduan['jawaban'] != ""):?>
+                                <div style="text-align: justify; margin-bottom: 10px;">
+                                    <span class="text-secondary"><?=$pengaduan['jawaban']?></span>
+                                </div>
+                                <?php endif;?>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <a data-toggle="collapse" data-target="#demo<?=$i?>" id="lengkap<?=$i?>" data-id="<?=$i?>" class="text-primary lengkap" style="cursor: pointer;">
+                                Baca Selengkapnya
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+                <?php endforeach;?>   
+            </div>
+            <?= $this->pagination->create_links();?>
+        </div>
+    </section>
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
@@ -135,6 +219,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+
         var wrapper = $(".tempel_gambar");
         a = 0; b = 0; c = 0; d = 0; f = 0;
 
@@ -175,6 +260,20 @@
             var jumlah_gb = wrapper.children().length;
             $('#jml_gb').val(jumlah_gb);
         }, 1);
+
+        $('.lengkap').on('click', function(){
+            var id = $(this).data('id');
+            var konten = $('#demo'+id).attr('class');
+            if(konten == 'collapse'){
+                $('#lengkap'+id).text('Lebih Sedikit');
+                $('#sekilas'+id).attr('class', 'collapse');
+            }else{
+                $('#lengkap'+id).text('Baca Selengkapnya');
+                setTimeout(function(){
+                    $('#sekilas'+id).attr('class', 'collapse in');
+                },150);
+            }
+        });
     });
 
     function readURL(input, id) {
@@ -186,6 +285,8 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    
 </script>
 </body>
 
