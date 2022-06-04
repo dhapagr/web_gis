@@ -72,7 +72,7 @@ class Pengaduan extends CI_Controller {
 			);
 		endforeach;
 		$data['dt_pengaduan'] = $dt_pengaduan;
-		// echo "<pre>"; print_r($data); exit;
+		
         $this->load->view('user/template/header');
 		$this->load->view('user/pengaduan', $data);
 		$this->load->view('user/template/footer');

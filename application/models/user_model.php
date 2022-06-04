@@ -62,7 +62,6 @@ class User_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('tb_gambar_pengaduan');
 		$this->db->where('id_pengaduan', $id_pengaduan);
-		$this->db->group_by('id_pengaduan');
 		return $this->db->get()->result_array();
 	}
 }

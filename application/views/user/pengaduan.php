@@ -1,8 +1,3 @@
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"/>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
-<link href="<?php echo base_url("assets"); ?>/user/css/auth.css" rel="stylesheet"> -->
 <style>
   html, body {
     height: 100%;
@@ -14,11 +9,102 @@
     max-width: 100%;
     max-height: 100%;
   }
-  
 </style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- image slide -->
+<style>
+    * {box-sizing: border-box}
+    body {font-family: Verdana, sans-serif; margin:0}
+    .mySlides {display: none}
+    img {vertical-align: middle;}
+
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 53%;
+        width: auto;
+        margin-top: -22px;
+        color: white;
+        transition: 0.6s ease;
+        border-radius: 100%;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 100%;
+    }
+
+    /* Caption text */
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    <?php foreach($dt_pengaduan as $i => $pengaduan): 
+        if(count($pengaduan['gambar_pengaduan']) != 0):?>
+    .dot<?=$pengaduan['id_pengaduan']?> {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+    <?php endif; endforeach;?>
+
+    .active, .dot:hover {
+        background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+        .prev, .next,.text {font-size: 11px}
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" ></script>
+  
 <body>
   
 <main id="main">
@@ -130,26 +216,32 @@
     <!-- daftar pengaduan -->
     <section id="cta" class="ctalogin"></section>
     <section id="about" class="about">
-        <div class="container" data-aos="fade-up">
+        <div class="container-fluid" data-aos="fade-up">
             <div class="section-title">
                 <h2>DAFTAR PENGADUAN</h2>
             </div>
-            <div class="row" id="pagination" autofocus>
+            <div class="row">
                 <?php foreach($dt_pengaduan as $i => $pengaduan): ?>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card shadow">
-                        <div class="d-flex justify-content-between">
-                            <div class="col-2 text-center bg-primary text-white">
-                                <h3><?= date('d', strtotime($pengaduan['tanggal_pengaduan']))?></h1>
-                                <h6><?= date('m-Y', strtotime($pengaduan['tanggal_pengaduan']))?></h6>
+                        <div class="d-flex">
+                            <div class="col-3 bg-primary text-white d-flex align-items-center justify-content-center">
+                                <div class="">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <h4><?= date('d', strtotime($pengaduan['tanggal_pengaduan']))?></h4>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <small><?= date('m-Y', strtotime($pengaduan['tanggal_pengaduan']))?></small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-10 d-flex align-items-center justify-content-center">
-                                <h4 class="text-secondary text-center"><b><?=$pengaduan['subjek']?></b></h4>
+                            <div class="col-9 d-flex align-items-center justify-content-center">
+                                <h5 class="text-secondary text-center"><b><?=$pengaduan['subjek']?></b></h5>
                             </div>
                         </div>
-                        <div id="sekilas<?=$i?>" class="collapse in" style="text-align: justify; margin-left: 20px; margin-right: 20px; margin-top: 10px;">
+                        <div id="sekilas<?=$i?>" style="text-align: justify; margin-left: 20px; margin-right: 20px; margin-top: 10px;">
                             <?php if (strlen($pengaduan['pesan']) > 10){
-                                $str = substr($pengaduan['pesan'], 0, 100) . '...';
+                                $str = substr($pengaduan['pesan'], 0, 90) . '...';
                             } echo "<span class='text-secondary'>".$str."</span>";?>
                         </div>
                         <div id="demo<?=$i?>" class="collapse">
@@ -157,14 +249,29 @@
                                 <div style="text-align: justify; margin-bottom: 10px;">
                                     <span class="text-secondary"><?=$pengaduan['pesan']?></span>
                                 </div>
-                                <?php if($pengaduan['gambar_pengaduan'] != ""): 
-                                    foreach($pengaduan['gambar_pengaduan'] as $gambar): ?>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="col-8">
-                                            <img src="<?=base_url('./assets/user/img/gb_pengaduan/'.$gambar['gambar'])?>" width="100%" class="mb-3" alt="">
+                                <?php if(count($pengaduan['gambar_pengaduan']) != 0): ?>
+                                    <div class="slideshow-container">
+                                        <?php foreach($pengaduan['gambar_pengaduan'] as $gambar):
+                                            if($gambar['id_pengaduan'] == $pengaduan['id_pengaduan']): ?>
+                                        <div class="text-center mySlides<?=$pengaduan['id_pengaduan']?> show">
+                                            <img src="<?=base_url('./assets/user/img/gb_pengaduan/'.$gambar['gambar'])?>" width="80%" alt="" style="border-radius: 10px;">
                                         </div>
+                                        <?php endif; endforeach; ?>
+
+                                        <a class="prev" onclick="plusSlides<?=$pengaduan['id_pengaduan']?>(-1)">
+                                            <i class="fas fa-chevron-circle-left text-secondary" style="width: 25px; height: auto;"></i>
+                                        </a>
+                                        <a class="next" onclick="plusSlides<?=$pengaduan['id_pengaduan']?>(1)">
+                                            <i class="fas fa-chevron-circle-right text-secondary" style="width: 25px; height: auto;"></i>
+                                        </a>
+                                    </div><br>
+                                    <div style="text-align:center">
+                                        <?php foreach($pengaduan['gambar_pengaduan'] as $key => $gambar):
+                                            if($gambar['id_pengaduan'] == $pengaduan['id_pengaduan']):?>
+                                            <span class="dot<?=$pengaduan['id_pengaduan']?>" onclick="currentSlide<?=$pengaduan['id_pengaduan']?>(<?=$key+1?>)"></span>
+                                        <?php endif; endforeach; ?>
                                     </div>
-                                <?php endforeach; endif; ?>
+                                <?php endif; ?>
                                 <div>
                                     <i class="fas fa-user-circle text-secondary"></i>
                                     <label class="text-secondary"> Pelapor: </label>
@@ -266,11 +373,11 @@
             var konten = $('#demo'+id).attr('class');
             if(konten == 'collapse'){
                 $('#lengkap'+id).text('Lebih Sedikit');
-                $('#sekilas'+id).attr('class', 'collapse');
+                $('#sekilas'+id).hide();
             }else{
                 $('#lengkap'+id).text('Baca Selengkapnya');
                 setTimeout(function(){
-                    $('#sekilas'+id).attr('class', 'collapse in');
+                    $('#sekilas'+id).show();
                 },150);
             }
         });
@@ -285,7 +392,37 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+    
+    // js slide image
+    <?php foreach($dt_pengaduan as $i => $pengaduan): if(count($pengaduan['gambar_pengaduan']) != 0):?>
+        
+    let slideIndex<?=$i?> = 1;
+    showSlides<?=$pengaduan['id_pengaduan']?>(slideIndex<?=$i?>);
 
+    function plusSlides<?=$pengaduan['id_pengaduan']?>(n) {
+        showSlides<?=$pengaduan['id_pengaduan']?>(slideIndex<?=$i?> += n);
+    }
+    
+    function currentSlide<?=$pengaduan['id_pengaduan']?>(n) {
+        showSlides<?=$pengaduan['id_pengaduan']?>(slideIndex<?=$i?> = n);
+    }
+
+    function showSlides<?=$pengaduan['id_pengaduan']?>(n) {
+        let i;
+        let slides<?=$pengaduan['id_pengaduan']?> = document.getElementsByClassName("mySlides<?=$pengaduan['id_pengaduan']?>");
+        let dots = document.getElementsByClassName("dot<?=$pengaduan['id_pengaduan']?>");
+        if (n > slides<?=$pengaduan['id_pengaduan']?>.length) {slideIndex<?=$i?> = 1}    
+        if (n < 1) {slideIndex<?=$i?> = slides<?=$pengaduan['id_pengaduan']?>.length}
+        for (i = 0; i < slides<?=$pengaduan['id_pengaduan']?>.length; i++) {
+            slides<?=$pengaduan['id_pengaduan']?>[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides<?=$pengaduan['id_pengaduan']?>[slideIndex<?=$i?>-1].style.display = "block";  
+        dots[slideIndex<?=$i?>-1].className += " active";
+    }
+    <?php endif; endforeach?>
     
 </script>
 </body>
