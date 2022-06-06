@@ -174,4 +174,11 @@ class Admin_model extends CI_Model
 		}
 		return $data2;
 	}
+	public function get_pengaduan()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_pengaduan');
+		$this->db->order_by('tanggal_pengaduan', 'desc');
+		return $this->db->get();
+	}
 }    
