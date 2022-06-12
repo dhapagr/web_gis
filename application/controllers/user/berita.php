@@ -11,8 +11,9 @@ class Berita extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('user/template/header');
-		$this->load->view('user/berita');
-		$this->load->view('user/template/footer');
+		$this->load->view('template_berita/header');
+		$this->load->view('template_berita/navbar');
+		$this->load->view('user/berita_2');
+		$this->load->view('template_berita/footer');
 	}
 }
