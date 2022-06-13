@@ -11,6 +11,7 @@ class Berita extends CI_Controller {
 		{
 			redirect('admin/welcome');
 		}
+		date_default_timezone_set('Asia/Jakarta');
 		// $this->load->view('component/v_dashboard');
 	}
     public function index()
@@ -66,6 +67,7 @@ class Berita extends CI_Controller {
 				'keterangan_berita' => $this->input->post('keterangan'),
 				'isi_berita' 		=> $this->input->post('isi_berita'),
 				'tag_berita' 		=> $tag,
+				'created_at'		=> date('Y-m-d H:i:s'),
 				'status' 			=> 1,
 			);
 		}		
