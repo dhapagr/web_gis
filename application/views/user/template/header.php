@@ -82,7 +82,7 @@
         <li><a class="nav-link scrollto" href="<?php echo base_url("user/pengaduan"); ?>">Pengaduan</a></li>
         <li><a class="nav-link scrollto" href="<?php echo base_url("user/webgis"); ?>">Webgis</a></li>
         <li><a class="nav-link scrollto" href="<?php echo base_url("user/berita"); ?>">Portal Berita</a></li>
-        <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
+        <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
         <?php if($this->session->userdata('nama') == ''):?>
           <li><a  href="<?php echo base_url("user/login"); ?>">Login</a></li>
         <?php else: ?>

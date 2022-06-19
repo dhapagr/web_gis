@@ -106,10 +106,11 @@ class Berita extends CI_Controller {
 	} 
 	public function edit_berita($id)
 	{	
+		$tag_seo = $this->input->post('tag');
+		$tag=implode(',',$tag_seo);
+
 		if ($this->input->post('tag')!='')
 		{
-			$tag_seo = $this->input->post('tag');
-			$tag=implode(',',$tag_seo);
 			$data = array(
 				'judul_berita' 		=> $this->input->post('judul'),
 				'sub_judul' 		=> $this->input->post('sub_judul'),

@@ -105,10 +105,8 @@
                                                     <?php endforeach; endforeach ?>
                                                     <?php foreach ($dt_tag as $k ) :
                                                         if(!in_array($k['id_tag'], $data_slc)): ?>
-                                                            <option value="<?= $data['id_tag']?>"><?= $k['nama_tag']?></option>
+                                                            <option value="<?= $k['id_tag']?>"><?= $k['nama_tag']?></option>
                                                     <?php endif; endforeach;?>
-                                                    
-                                                 
                                                 </select>
                                             </div>
                                         </div>
