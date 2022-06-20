@@ -7,15 +7,19 @@ class Berita extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('model_berita');
+		$this->load->library('user_agent');
+		date_default_timezone_set('Asia/Jakarta');
 	}
 
 	public function index()
 	{	
 		$data['tag']			= $this->db->get('tb_tag')->result_array();
-		$data['berita_banner']	= $this->model_berita->get_berita_banner()->row(); //tranding
+		$data['berita_banner']	= $this->model_berita->get_berita_banner(); //tranding
 		$data['berita_terbaru']	= $this->model_berita->get_berita_terbaru()->result_array();
-		$data['video_berita']	= $this->model_berita->get_video_berita()->result_array();
-		// echo json_encode($data); exit;
+		$data['berita_random']	= $this->model_berita->get_berita_random()->result_array();
+		$data['video_berita']	= $this->model_berita->get_video_random()->result_array();
+		$data['video_terbaru']	= $this->model_berita->get_video_terbaru()->result_array();
+		// echo json_encode($data['berita_banner']); exit;
 		$this->load->view('template_berita/header');
 		$this->load->view('template_berita/navbar');
 		$this->load->view('user/berita_2', $data);
@@ -58,7 +62,7 @@ class Berita extends CI_Controller {
 
 		$data['kategori_berita'] = $this->model_berita->get_berita_kategori($config['per_page'], $from, $id_kategori->id_tag);
 		$data['berita_terbaru']	= $this->model_berita->get_berita_terbaru()->result_array();
-		$data['tranding']	= $this->model_berita->get_berita_banner()->row();// tranding
+		$data['tranding']	= $this->model_berita->get_berita_banner();// tranding
 
 		$this->load->view('template_berita/header');
 		$this->load->view('template_berita/navbar');
@@ -68,10 +72,44 @@ class Berita extends CI_Controller {
 
 	public function detail_berita($param)
 	{
+		// get data user
+		if ($this->agent->is_browser())
+			{$agent 	= 	
+				"Browser: ".$this->agent->browser()."\n".		
+				"Version: ".$this->agent->version()."\n";}
+		elseif ($this->agent->is_robot())
+			{$agent 	= 	
+				"Robot name: ".$this->agent->robot()."\n";}
+		elseif ($this->agent->is_mobile())
+			{$agent 	= 	
+				"Mobile: ".$this->agent->mobile()."\n";}
+		else
+			{$agent 	= 
+				'Unidentified User Agent \n';}
+		$platform = $this->agent->platform();
+		// get ip user
+		$ipaddress = getenv('HTTP_CLIENT_IP')?:
+		getenv('HTTP_X_FORWARDED_FOR')?:
+		getenv('HTTP_X_FORWARDED')?:
+		getenv('HTTP_FORWARDED_FOR')?:
+		getenv('HTTP_FORWARDED')?:
+		getenv('REMOTE_ADDR');
+     		
 		$hasil = str_replace("-", " ", $param);
-		$data['berita'] = $this->db->get_where('tb_berita', ['sub_judul' => $hasil])->row();
+		$detail_berita = $this->db->get_where('tb_berita', ['sub_judul' => $hasil])->row();
+		$data_user = $agent."Platform: ".$platform."\nIP Client: ". $ipaddress; 
+
+		$data2 = [
+			'id_berita' 		=> $detail_berita->id_berita,
+			'data_pengunjung' 	=> $data_user,
+			'created_at'		=> date('Y-m-d H:i:s'),
+		];
+		$this->db->insert('tb_berita_dilihat', $data2);
+
+		// tampil data
+		$data['berita'] = $detail_berita;
 		$data['berita_terbaru']	= $this->model_berita->get_berita_terbaru()->result_array();
-		$data['tranding']	= $this->model_berita->get_berita_banner()->row();// tranding
+		$data['tranding']	= $this->model_berita->get_berita_banner();// tranding
 
 		$this->load->view('template_berita/header');
 		$this->load->view('template_berita/navbar');

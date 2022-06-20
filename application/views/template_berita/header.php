@@ -19,6 +19,9 @@
         <!-- inject:css -->
         <link rel="stylesheet" href="<?=base_url()?>assets/berita/css/style.css">
         <!-- endinject -->
+
+        <!-- swal 2 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.18/sweetalert2.min.js" integrity="sha512-98hK38IvWQC069FFbq/la6NaBj4TGplZ118B+bFVOxsBQQL4EqKUWw9JkNh8Lem7FCGkLCxgr81q+/hRIemJCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
 
     <body>

@@ -1,3 +1,9 @@
+<style>
+    .berita-link:hover{
+        color: deepskyblue;
+        cursor: pointer;
+    }
+</style>
 <div class="content-wrapper">
     <div class="container berita-kategori">
         <div class="col-sm-12 card-kategori">
@@ -18,7 +24,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 grid-margin">
-                                        <h2 class="font-weight-600 mb-2"><?=$berita['sub_judul']?></h2>
+                                        <h2 class="font-weight-600 mb-2 berita-link"><?=$berita['sub_judul']?></h2>
                                         <p class="fs-13 text-muted mb-0">
                                             <span class="mr-2">Diunggah pada 
                                                 <?php 
@@ -32,6 +38,7 @@
                                                     elseif($hari == 7){echo "Sabtu";}
                                                 ?>,
                                                 <?= date('d-m-Y', strtotime($berita['created_at']))?>
+                                                <?= "<span class='ml-1'></span>".date('H:i', strtotime($berita['created_at']))." WIB"?>
                                             </span>
                                         </p>
                                         <p class="fs-15" style="text-align: justify;">
@@ -45,14 +52,16 @@
                                                         array_push($new, $arr[$i]);
                                                     }
                                                 }
+
+                                                $judul = str_replace(' ', '-', $berita['sub_judul']);
                                             
                                                 if($new){
                                                     // tampil kata max 25
                                                     $new = implode(" ", $new);
-                                                    echo $new.' ... <a href="'.base_url().'">Baca Selengkapnya</a>';
+                                                    echo $new.' ... <a href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                                 }else {
                                                     // tampil semua kata
-                                                    echo $berita['isi_berita'].' ... <a href="'.base_url().'">Baca Selengkapnya</a>';
+                                                    echo $berita['isi_berita'].' ... <a href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                                 }
                                             ?>
                                         </p>
@@ -68,7 +77,7 @@
                                     <div class="border-bottom pb-4 pt-4">
                                         <div class="row align-items-center">
                                             <div class="col-sm-8">
-                                                <h5 class="font-weight-600 mb-1" style="text-align: justify;"><?=$terbaru['sub_judul']?></h5>
+                                                <h5 class="font-weight-600 mb-1 berita-link" style="text-align: justify;"><?=$terbaru['sub_judul']?></h5>
                                                 <p class="fs-13 text-muted mb-0">
                                                     <span class="mr-2">Diunggah
                                                         <?php
@@ -103,9 +112,7 @@
                                     <div class="rotate-img">
                                         <img src="<?=base_url('assets/admin/images/berita/'.$tranding->foto_berita)?>" alt="banner" class="img-fluid"/>
                                     </div>
-                                    <h3 class="mt-3 font-weight-600">
-                                        <?= $tranding->sub_judul?>
-                                    </h3>
+                                    <h3 class="mt-3 font-weight-600 berita-link"><?= $tranding->sub_judul?></h3>
                                     <p class="fs-13 text-muted mb-0">
                                         <span class="mr-2">Diunggah
                                             <?php
@@ -150,5 +157,11 @@
             $('.berita-kategori').attr('class', 'berita-kategori');
             $('.card-kategori').attr('class', 'px-2');
         }
+
+        $('.berita-link').on('click', function(){
+            var judul   = $(this).text()
+            var param = judul.replace(/ /gi, "-")
+            window.location.href="<?=base_url('user/berita/detail_berita/')?>"+param
+        })
     });
 </script>

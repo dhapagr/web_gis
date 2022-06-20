@@ -98,15 +98,15 @@
             <div class="col-lg-9 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <?php foreach($berita_terbaru as $terbaru): ?>
+                        <?php foreach($berita_random as $random): ?>
                         <div class="row">
                             <div class="col-sm-4 grid-margin align-self-center">
                                 <div class="position-relative">
                                     <div class="rotate-img">
-                                        <img src="<?=base_url('assets/admin/images/berita/'.$terbaru['foto_berita'])?>" alt="thumb" class="img-fluid"/>
+                                        <img src="<?=base_url('assets/admin/images/berita/'.$random['foto_berita'])?>" alt="thumb" class="img-fluid"/>
                                     </div>
                                     <div class="badge-positioned">
-                                        <?php $tag_berita = explode(",", $terbaru['tag_berita']); 
+                                        <?php $tag_berita = explode(",", $random['tag_berita']); 
                                             for($i=0; $i<count($tag_berita); $i++):
                                                 foreach($tag as $tagar): 
                                                     if($tag_berita[$i] == $tagar['id_tag']): ?>
@@ -116,28 +116,26 @@
                                 </div>
                             </div>
                             <div class="col-sm-8 grid-margin align-self-center">
-                                <h2 class="mb-2 font-weight-600 berita-link" style="text-align: justify;"><?=$terbaru['sub_judul']?></h2>
+                                <h2 class="mb-2 font-weight-600 berita-link" style="text-align: justify;"><?=$random['sub_judul']?></h2>
                                 <div class="fs-13 mb-2">
-                                    <span class="mr-2">Diunggah
-                                        <?php
-                                            date_default_timezone_set('Asia/Jakarta');
-                                            $awal  = date_create($terbaru['created_at']);
-                                            $akhir = date_create(date('Y-m-d H:i:s')); // waktu sekarang
-                                            $diff  = date_diff($awal, $akhir);
-                                            // pecah waktu
-                                            if($diff->y != 0){echo $diff->y." tahun ";}
-                                            if($diff->m != 0){echo $diff->m." bulan ";}
-                                            if($diff->d != 0){echo $diff->d." hari ";}
-                                            if($diff->h != 0){echo $diff->h." jam ";}
-                                            if($diff->i != 0){echo $diff->i." menit ";}
-                                            // if($diff->s != 0){echo $diff->s." detik ";}
-                                        ?> 
-                                        yang lalu.
+                                    <span class="mr-2">Diunggah pada 
+                                        <?php 
+                                            $hari = date('N', strtotime($random['created_at']));
+                                            if($hari == 1){echo "Minggu";}
+                                            elseif($hari == 2){echo "Senin";}
+                                            elseif($hari == 3){echo "Selasa";}
+                                            elseif($hari == 4){echo "Rabu";}
+                                            elseif($hari == 5){echo "Kamis";}
+                                            elseif($hari == 6){echo "Jumat";}
+                                            elseif($hari == 7){echo "Sabtu";}
+                                        ?>,
+                                        <?= date('d-m-Y', strtotime($random['created_at']))?>
+                                        <?= "<span class='ml-1'></span>".date('H:i', strtotime($random['created_at']))." WIB"?>
                                     </span>
                                 </div>
                                 <p class="mb-0" style="text-align: justify;">
                                     <?php 
-                                        $arr = explode(" ", $terbaru['isi_berita']);
+                                        $arr = explode(" ", $random['isi_berita']);
                                         $limit = 20; // batasan jumlah kata
                                         $new = [];
                                     
@@ -146,14 +144,16 @@
                                                 array_push($new, $arr[$i]);
                                             }
                                         }
-                                    
+                                        
+                                        $judul = str_replace(' ', '-', $random['sub_judul']);
+
                                         if($new){
                                             // tampil kata max 25
                                             $new = implode(" ", $new);
-                                            echo $new.' ... <a style="color: deepskyblue;" href="'.base_url().'">Baca Selengkapnya</a>';
+                                            echo $new.' ... <a style="color: deepskyblue;" href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                         }else {
                                             // tampil semua kata
-                                            echo $terbaru['isi_berita'].' ... <a style="color: deepskyblue;" href="'.base_url().'">Baca Selengkapnya</a>';
+                                            echo $random['isi_berita'].' ... <a style="color: deepskyblue;" href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                         }
                                     ?>
                                 </p>
@@ -175,7 +175,7 @@
                                         Video Terbaru
                                     </div>
                                 </div>
-                                <?php foreach($video_berita as $terbaru): ?>
+                                <?php foreach($video_terbaru as $terbaru): ?>
                                 <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3 video-link" data-id="<?=$terbaru['video_berita']?>">
                                     <div style="max-width: 70px; max-height: auto; margin-right: 15px;">
                                         <div class="rotate-img">
@@ -189,14 +189,14 @@
                             <div class="col-lg-8">
                                 <div class="card-title">Video</div>
                                 <div class="row">
-                                    <?php foreach($video_berita as $terbaru): ?>
+                                    <?php foreach($video_berita as $berita_video): ?>
                                     <div class="col-sm-6 grid-margin">
                                         <div class="position-relative">
-                                            <embed src="http://img.youtube.com/vi/<?=substr($terbaru['video_berita'], -11)?>/maxresdefault.jpg"/ width="100%" height="auto">
+                                            <embed src="http://img.youtube.com/vi/<?=substr($berita_video['video_berita'], -11)?>/maxresdefault.jpg"/ width="100%" height="auto">
                                             <div class="badge-positioned w-90 d-flex justify-content-between align-items-center">
                                                 <div class="col-9">
                                                     <div class="row">
-                                                        <?php $tag_berita = explode(",", $terbaru['tag_berita']); 
+                                                        <?php $tag_berita = explode(",", $berita_video['tag_berita']); 
                                                             for($i=0; $i<count($tag_berita); $i++):
                                                                 foreach($tag as $tagar): 
                                                                     if($tag_berita[$i] == $tagar['id_tag']): ?>
@@ -206,7 +206,7 @@
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="video-icon">
-                                                        <a href="<?=$terbaru['video_berita']?>" target="_blank" style="cursor: pointer;"><i class="mdi mdi-play"></i></a>
+                                                        <a href="<?=$berita_video['video_berita']?>" target="_blank" style="cursor: pointer;"><i class="mdi mdi-play"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,7 +222,6 @@
         </div>
     </div>
 </div>
-div
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
