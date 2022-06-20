@@ -63,10 +63,10 @@
                                             <section class="full-editor">
                                                 <div id="full-wrapper">
                                                     <div id="full-container">
-                                                        <!-- <textarea type="text" class="editor" style="height:260px" name="isi_berita"></textarea> -->
-                                                        <div class="editor" style="height:260px"  id="test" >
+                                                        <textarea type="text" class="form-control" style="height:260px" name="isi_berita" required ><?= $data['isi_berita']?></textarea>
+                                                        <!-- <div class="editor" style="height:260px"  id="test" >
                                                         </div>
-                                                        <input type="text" hidden name="isi_berita" id="isi" value="<?= $data['isi_berita']?>" >
+                                                        <input type="text" hidden name="isi_berita" id="isi" value="<?= $data['isi_berita']?>" > -->
                                                     </div>
                                                 </div>
                                             </section>              
@@ -138,22 +138,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        var isi = $("#isi").val();
-        $("p").text(isi);
+        // var isi = $("#isi").val();
+        // $("p").text(isi);
 
-        setInterval(function(){
-            var isi = $("p").text();
-            $("#isi").val(isi);
-        }, 1);
+        // setInterval(function(){
+        //     var isi = $("p").text();
+        //     $("#isi").val(isi);
+        // }, 1);
 
-        $("#submit").click(function(){
-            var isi = $("p").text();
-            if(isi != ''){
-                $("#isi").val(isi);
-            }else{
-                alert('isi berita tdk boleh kosong');
-                return false;
-            }
-        });
+        // $("#submit").click(function(){
+        //     var isi = $("p").text();
+        //     if(isi != ''){
+        //         $("#isi").val(isi);
+        //     }else{
+        //         alert('isi berita tdk boleh kosong');
+        //         return false;
+        //     }
+        // });
     });
 </script>

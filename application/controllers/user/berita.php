@@ -88,12 +88,7 @@ class Berita extends CI_Controller {
 				'Unidentified User Agent \n';}
 		$platform = $this->agent->platform();
 		// get ip user
-		$ipaddress = getenv('HTTP_CLIENT_IP')?:
-		getenv('HTTP_X_FORWARDED_FOR')?:
-		getenv('HTTP_X_FORWARDED')?:
-		getenv('HTTP_FORWARDED_FOR')?:
-		getenv('HTTP_FORWARDED')?:
-		getenv('REMOTE_ADDR');
+		$ipaddress = $this->input->ip_address();
      		
 		$hasil = str_replace("-", " ", $param);
 		$detail_berita = $this->db->get_where('tb_berita', ['sub_judul' => $hasil])->row();
@@ -104,6 +99,7 @@ class Berita extends CI_Controller {
 			'data_pengunjung' 	=> $data_user,
 			'created_at'		=> date('Y-m-d H:i:s'),
 		];
+
 		$this->db->insert('tb_berita_dilihat', $data2);
 
 		// tampil data
