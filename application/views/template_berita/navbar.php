@@ -38,7 +38,7 @@
                                     <a class="nav-link" href="<?=base_url("user/berita")?>">Portal Berita</a>
                                 </li>
                                 <li class="nav-item mb-3">
-                                    <a class="nav-link" href="#">Kontak</a>
+                                    <a class="nav-link" href="#kontak">Kontak</a>
                                 </li>
                                 <?php if($this->session->userdata('nama') ==''): ?>
                                     <li class="nav-item mb-3">
