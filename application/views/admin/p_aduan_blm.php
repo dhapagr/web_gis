@@ -22,10 +22,10 @@
                         <div class="card-body">
                             <ul class="nav user-profile-nav justify-content-center justify-content-md-start nav-pills border-bottom-0 mb-0" role="tablist">
                                 <li class="nav-item mb-0">
-                                    <a class=" nav-link d-flex px-1 active" href="<?=base_url('admin/data_laporan/')?>" aria-selected="true"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Terjawab</span></a>
+                                    <a class=" nav-link d-flex px-1" href="<?=base_url('admin/data_laporan/')?>" aria-selected="true"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Terjawab</span></a>
                                 </li>
                                 <li class="nav-item mb-0">
-                                    <a class="nav-link d-flex px-1" href="<?=base_url('admin/data_laporan/pengaduan_blm_jwb/')?>" role="tab" aria-selected="false"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Belum Terjawab</span></a>
+                                    <a class="nav-link d-flex px-1 active" href="<?=base_url('admin/data_laporan/pengaduan_blm_jwb/')?>" role="tab" aria-selected="false"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Belum Terjawab</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -72,20 +72,6 @@
                                                                 <a data-id="<?=$aduan['id_pengaduan']?>" class="dropdown-item text-success detail" style="cursor: pointer;"><i class="fa fa-search text-success mr-1"></i><b> Detail</b></a>
                                                                 <a data-id="<?=$aduan['id_pengaduan']?>" class="dropdown-item text-warning edit" style="cursor: pointer;"><i class="fa fa-edit text-warning mr-1"></i><b> Edit</b></a>
                                                                 <a data-id="<?=$aduan['id_pengaduan']?>" class="dropdown-item text-danger hapus" style="cursor: pointer;"><i class="fa fa-trash text-danger mr-1"></i><b> Hapus</b></a>
-                                                                <div class="dropdown-divider mb-1"></div>
-                                                                <style>
-                                                                    .hover-info:hover{color: #00cfdd;}
-                                                                    .hover-warning:hover{color: orange;}
-                                                                    .cursor-pointer{cursor: pointer;}
-                                                                </style>
-                                                                <div class="form-check form-check-inline ml-2">
-                                                                    <input data-id="<?=$aduan['id_pengaduan']?>" class="form-check-input status-pengaduan" type="checkbox" name="exampleRadios" id="status1<?=$aduan['id_pengaduan']?>" value="1" <?php if($aduan['status_pengaduan'] == 1){echo 'checked';}?>>
-                                                                    <label class="form-check-label hover-info cursor-pointer" for="status1<?=$aduan['id_pengaduan']?>">Publish</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline ml-2 mt-1">
-                                                                    <input data-id="<?=$aduan['id_pengaduan']?>" class="form-check-input status-pengaduan" type="checkbox" name="exampleRadios" id="status0<?=$aduan['id_pengaduan']?>" value="0" <?php if($aduan['status_pengaduan'] == 0){echo 'checked';}?>>
-                                                                    <label class="form-check-label hover-warning cursor-pointer" for="status0<?=$aduan['id_pengaduan']?>">Non-publish</label>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -126,9 +112,19 @@
     });
 </script>
 
-
 <script type="text/javascript">
     $(document).ready(function(){
+        var id_pengaduan = <?=$id_pengaduan?>;
+        if(id_pengaduan != ""){
+            $.ajax({
+                url: "<?=base_url('admin/data_laporan/get_detail_pengaduan/')?>"+id_pengaduan,
+                success: function (response) {
+                    $('#tempel-modal').html(response);
+                    $('#modal-detail-pengaduan').modal('show');
+                }
+            });
+        }
+        
         $('.detail').on('click', function(){
             var id_pengaduan = $(this).data('id');
             $.ajax({
@@ -174,34 +170,6 @@
                 }, 300);
             }
         });
-
-        $('.status-pengaduan').on('change', function(){
-            var id_pengaduan = $(this).data('id');
-            var status = $(this).val();
-            $.ajax({
-                url: "<?=base_url('admin/data_laporan/ubah_status_pengaduan/')?>"+id_pengaduan+"/"+status,
-                success: function (response) {
-                    if(response == 1){
-                        if(status == 1){
-                            $('#status'+id_pengaduan).html('<span class="text-success">Publish</span>');
-                            $('#status0'+id_pengaduan).removeAttr('checked');
-                            $('#status0'+id_pengaduan).prop('checked', false);
-                            $('#status1'+id_pengaduan).prop('checked', true);
-                        }else{
-                            $('#status'+id_pengaduan).html('<span class="text-danger">Non-Publish</span>');
-                            $('#status1'+id_pengaduan).removeAttr('checked');
-                            $('#status1'+id_pengaduan).prop('checked', false);
-                            $('#status0'+id_pengaduan).prop('checked', true);
-                        }
-                        setTimeout(function(){
-                            alert('Status berhasil diubah.')
-                        }, 300);
-                    }else{
-                        alert('Status tidak bisa diubah.');
-                    }
-                }
-            });
-        }); 
     });
 
     function simpan(id_pengaduan){

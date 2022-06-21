@@ -71,7 +71,7 @@
                                             <section class="full-editor">
                                                 <div id="full-wrapper">
                                                     <div id="full-container">
-                                                        <textarea type="text" class="form-control" style="height:260px" name="isi_berita"></textarea>
+                                                        <textarea type="text" class="form-control" style="height:260px" name="isi_berita" required></textarea>
                                                         <!-- <div class="editor" style="height:260px"  id="test">
                                                         </div>
                                                         <input type="text" hidden name="isi_berita" id="isi" required> -->

@@ -174,11 +174,21 @@ class Admin_model extends CI_Model
 		}
 		return $data2;
 	}
-	public function get_pengaduan()
+	public function get_pengaduan_jawab()
 	{
 		$this->db->select('*');
 		$this->db->from('tb_pengaduan');
 		$this->db->order_by('tanggal_pengaduan', 'desc');
+		$this->db->where('jawaban!=',null);
+		return $this->db->get();
+	}
+
+	public function get_pengaduan_belum()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_pengaduan');
+		$this->db->order_by('tanggal_pengaduan', 'desc');
+		$this->db->where('jawaban',null);
 		return $this->db->get();
 	}
 }    

@@ -18,7 +18,7 @@ class Data_laporan extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');		
 		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$pengaduan = $this->admin_model->get_pengaduan()->result_array();
+		$pengaduan = $this->admin_model->get_pengaduan_jawab()->result_array();
 		foreach($pengaduan as $p_aduan):
 			$dt_pengaduan[] = [
 				'id_pengaduan' 		=> $p_aduan['id_pengaduan'],
@@ -35,6 +35,56 @@ class Data_laporan extends CI_Controller {
 		$this->load->view('admin/template/header_admin');
 		$this->load->view('admin/template/navigation_admin',$data);
 		$this->load->view('admin/data_laporan');
+		$this->load->view('admin/template/footer_admin');
+	}
+
+	public function pengaduan_blm_jwb()
+	{
+		$id_user = $this->session->userdata('id_user');		
+		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		$pengaduan = $this->admin_model->get_pengaduan_belum()->result_array();
+		foreach($pengaduan as $p_aduan):
+			$dt_pengaduan[] = [
+				'id_pengaduan' 		=> $p_aduan['id_pengaduan'],
+				'lokasi' 			=> $p_aduan['lokasi'],
+				'subjek' 			=> $p_aduan['subjek'],
+				'tanggal_pengaduan' => $p_aduan['tanggal_pengaduan'],
+				'jawaban' 			=> $p_aduan['jawaban'],
+				'status_pengaduan' 	=> $p_aduan['status_pengaduan'],
+				'data_user' 		=> $this->user_model->get_data_user($p_aduan['id_user']),
+			];
+		endforeach;
+		$data['dt_pengaduan'] = $dt_pengaduan;
+		$data['id_pengaduan'] = "000";
+		// echo "<pre>"; print_r($data); exit;
+		$this->load->view('admin/template/header_admin');
+		$this->load->view('admin/template/navigation_admin',$data);
+		$this->load->view('admin/p_aduan_blm');
+		$this->load->view('admin/template/footer_admin');
+	}
+
+	public function pengaduan_blm_tambah_modal($param)
+	{
+		$id_user = $this->session->userdata('id_user');		
+		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		$pengaduan = $this->admin_model->get_pengaduan_belum()->result_array();
+		foreach($pengaduan as $p_aduan):
+			$dt_pengaduan[] = [
+				'id_pengaduan' 		=> $p_aduan['id_pengaduan'],
+				'lokasi' 			=> $p_aduan['lokasi'],
+				'subjek' 			=> $p_aduan['subjek'],
+				'tanggal_pengaduan' => $p_aduan['tanggal_pengaduan'],
+				'jawaban' 			=> $p_aduan['jawaban'],
+				'status_pengaduan' 	=> $p_aduan['status_pengaduan'],
+				'data_user' 		=> $this->user_model->get_data_user($p_aduan['id_user']),
+			];
+		endforeach;
+		$data['dt_pengaduan'] = $dt_pengaduan;
+		$data['id_pengaduan'] = $param;
+		// echo "<pre>"; print_r($param); exit;
+		$this->load->view('admin/template/header_admin');
+		$this->load->view('admin/template/navigation_admin',$data);
+		$this->load->view('admin/p_aduan_blm');
 		$this->load->view('admin/template/footer_admin');
 	}
 
