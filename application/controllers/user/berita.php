@@ -21,9 +21,12 @@ class Berita extends CI_Controller {
 		$data['video_terbaru']	= $this->model_berita->get_video_terbaru()->result_array();
 		// echo json_encode($data['berita_banner']); exit;
 		$this->load->view('template_berita/header');
-		$this->load->view('template_berita/navbar');
+		// $this->load->view('template_berita/navbar');
+		$this->load->view('user/template/header');
 		$this->load->view('user/berita_2', $data);
-		$this->load->view('template_berita/footer');
+		$this->load->view('user/template/footer');
+
+		// $this->load->view('template_berita/footer');
 	}
 
 	public function kategori($param)

@@ -1,13 +1,13 @@
 <!-- <script src="<?php echo base_url("assets"); ?>/admin/js/scripts/maps/geojson_madiun_kota.js"></script>
 <script src="<?php echo base_url("assets"); ?>/admin/js/scripts/maps/geojson_kecamatan_indonesia.js"></script>
-<script src="<?php echo base_url("assets"); ?>/admin/js/leaflet_search.js"></script> 
+<script src="<?php echo base_url("assets"); ?>/admin/js/leaflet_search.js"></script>  -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
 <link rel="stylesheet" href="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
 <script type="text/javascript" src="https://tiles.unwiredlabs.com/js/leaflet-unwired.js?v=1"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.min.js"></script>
-<script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.js"></script>    -->
+<script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.js"></script>   
 
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -164,9 +164,9 @@
                                                                 <?php foreach ($data_kelurahan as $k) :?>
                                                                     <?php foreach ($data_by_id as $dt) :
                                                                         if($dt['id_kelurahan'] == $k['id_kelurahan']):?>
-                                                                            <option value="<?php echo $dt['id_kelurahan'] ?>" selected><?php echo$dt['id_kelurahan'] ?></option>
+                                                                            <option value="<?php echo $dt['id_kelurahan'] ?>" selected><?php echo$dt['nama_kelurahan'] ?></option>
                                                                         <?php else:?>
-                                                                            <option value="<?php echo $k['id_kelurahan'] ?>"><?php echo$k['id_kelurahan'] ?></option>
+                                                                            <option value="<?php echo $k['id_kelurahan'] ?>"><?php echo$k['nama_kelurahan'] ?></option>
                                                                     <?php endif; endforeach ?>
                                                                 <?php endforeach ?>
                                                             </select>
@@ -519,7 +519,7 @@
     </div>
 </div>
 <script>
-        <?php foreach ($data_lokasi as $key) : ?>
+        <?php foreach ($data_all as $key) : ?>
 
             var myIcon = new L.Icon({
                 iconUrl: 'assets/admin/icon/marker-icon-black.png',

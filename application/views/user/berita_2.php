@@ -8,6 +8,7 @@
         cursor: pointer;
     }
 </style>
+<section id="cta" class="ctalogin"></section>
 <div class="content-wrapper">
     <div class="container hal-berita">
         <div class="row" data-aos="fade-up">

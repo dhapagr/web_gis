@@ -10176,9 +10176,9 @@ h6, .h6 {
 }
 
 /* Navbar */
-header {
+/* header {
   background: #032a63;
-}
+} */
 
 header .navbar {
   font-weight: 500;
@@ -10560,7 +10560,7 @@ header .navbar-bottom .navbar-toggler {
 }
 
 .content-wrapper .banner-content {
-  position: absolute;
+  /* position: absolute; */
   padding: 40px 60px;
   left: 0px;
   bottom: 0px;
@@ -10788,7 +10788,7 @@ footer .footer-top .count {
 
 footer .footer-bottom {
   padding: 24px 0 48px 0;
-  background: #032a63;
+  /* background: #032a63; */
 }
 
 .error-wrap {

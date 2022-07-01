@@ -20,10 +20,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets"); ?>/admin/vendors/css/forms/select/select2.min.css">
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets"); ?>/admin/css/core/menu/menu-types/vertical-menu.css">
+
 <style>
     #map {
-        width: 1650px;
-        height: 690px;
+        width: 100%;
+	      min-height: 690px;
     }
     .leaflet-google-layer{
         z-index: 0;
@@ -44,7 +45,7 @@
     </div>
 </section>
 <div class="card-body">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6">
             <h4 class="d-flex justify-content-center">FILTER KECAMATAN</h4 class="d-flex justify-content-center">
             <fieldset class="form-group">
@@ -94,7 +95,7 @@
                 </div>
             </fieldset>
         </div>
-    </div>
+    </div> -->
     <hr>
     <div  id="map" ></div>
     <hr>
@@ -148,40 +149,48 @@
   }).setView({ lng: INITIAL_LNG, lat: INITIAL_LAT }, 12);
   var hash = new L.Hash(map);
 
+  googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+      maxZoom: 20,
+      subdomains:['mt0','mt1','mt2','mt3']
+  });
+  googleStreets.addTo(map);
+
   L.control.layers({
       "Streets": streets,
       "Earth": earth,
       "Hybrid": hybrid,
+      "Google Mapas": googleStreets,
+      
   }, null, {
       position: "topright"
   }).addTo(map);
   L.control.scale().addTo(map);
 
-      // Add geocoder
-      var geocoder = L.control.geocoder(key, {
-        fullWidth: 650,
-        expanded: true,
-        markers: true,
-        url: 'https://api.locationiq.com/v1',
-      }).addTo(map);
+  var groupedOverlays = {
+    "Landmarks": {
+      "Cities": ExampleData.LayerGroups.cities,
+      "Restaurants": ExampleData.LayerGroups.restaurants
+    },
+    "Random": {
+      "Dogs": ExampleData.LayerGroups.dogs,
+      "Cats": ExampleData.LayerGroups.cats
+    }
+  };
 
-      // Re-sort control order so that geocoder is on top
-      var geocoderEl = geocoder._container;
-      geocoderEl.parentNode.insertBefore(geocoderEl, geocoderEl.parentNode.childNodes[0]);
+  // Add geocoder
+  var geocoder = L.control.geocoder(key, {
+    fullWidth: 650,
+    expanded: true,
+    markers: true,
+    url: 'https://api.locationiq.com/v1',
+  }).addTo(map);
+
+  // Re-sort control order so that geocoder is on top
+  var geocoderEl = geocoder._container;
+  geocoderEl.parentNode.insertBefore(geocoderEl, geocoderEl.parentNode.childNodes[0]);
   // Add the 'scale' control
 
   <?php endforeach ;?>
-  var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
-  var redMarker = L.icon({
-    iconUrl: imgDir + 'pothole.png',
-    iconRetinaUrl: imgDir + 'pothole.png',
-    iconSize: [30, 30],
-    iconAnchor: [12, 41],
-    popupAnchor: [-0, -31],
-    // shadowUrl: imgDir + 'marker-shadow.png',
-    shadowSize: [41, 41],
-    shadowAnchor: [14, 41]
-  })
   
   <?php foreach($data_kecelakaan as $key => $val) :?>
       L.marker([<?= $val['latitude'] ?>,<?= $val['longitude'] ?>], {icon: redMarker}).bindPopup("data").addTo(map);

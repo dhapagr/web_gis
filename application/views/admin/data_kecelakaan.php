@@ -82,7 +82,17 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-                                                            <td>test</td>
+                                                            <!-- <td><?= $data['prosentase'] ?></td> -->
+                                                            <td>
+                                                                <?php if($data['prosentase'] == 'ringan'): ?> 
+                                                                    <span class="badge badge-light-success"><?= $data['prosentase'] ?></span>
+                                                                <?php elseif($data['prosentase'] == 'sedang'): ?> 
+                                                                    <span class="badge badge-light-warning"><?= $data['prosentase'] ?></span>
+                                                                <?php elseif($data['prosentase'] == 'berat'): ?> 
+                                                                    <span class="badge badge-light-danger"><?= $data['prosentase'] ?></span>
+                                                                <?php endif;?>
+                                                            
+                                                            </td>
                                                             <td>
                                                                 <div  class="form-row">
                                                                     <button type="button" class="btn btn-icon btn-info mr-1 mb-1" data-toggle="modal" data-target="#myModal<?= $data['id_kecelakaan']?>"><i class="bx bx-info-circle"></i></button>

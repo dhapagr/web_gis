@@ -32,6 +32,14 @@ class Data_kecelakaan extends CI_Controller {
 	}
 	public function tambah_data()
 	{
+		$prosentase 			= $this->input->post('meninggal');
+		if($prosentase == 1)
+			{$value = 'ringan';}
+		elseif($prosentase == 2)
+			{$value = 'sedang';}
+		elseif($prosentase >= 3)
+			{$value = 'berat';}
+		// endif;
 		$data = array(
 			'nama_jalan' 		=> $this->input->post('jalan'),
 			'longitude' 		=> $this->input->post('longitude'),
@@ -48,6 +56,7 @@ class Data_kecelakaan extends CI_Controller {
 			'id_profesi'	 	=> $this->input->post('profesi'),
 			'id_umur'		 	=> $this->input->post('umur'),
 			'id_type' 			=> $this->input->post('type'),
+			'prosentase'		=> $value,
 		);
 		// echo "<pre>"; var_dump($data);
 		// exit;
@@ -117,7 +126,13 @@ class Data_kecelakaan extends CI_Controller {
 		$umur 					= $this->input->post('umur');
 		$type 					= $this->input->post('type');
 		$format 				= str_replace(".","",$number);
-		
+		$prosentase 			= $meninggal_dunia;
+		if($prosentase == 1)
+			{$value = 'ringan';}
+		elseif($prosentase == 2)
+			{$value = 'sedang';}
+		elseif($prosentase >= 3)
+			{$value = 'berat';}
 		// echo "<pre>"; var_dump($kelurahan);
 		// exit;
 
@@ -177,6 +192,7 @@ class Data_kecelakaan extends CI_Controller {
 				'id_profesi'		=> $profesi,
 				'id_umur'			=> $umur,
 				'id_type'			=> $type,	
+				'prosentase'		=> $value,
 			); 
 			$where = array('id_kecelakaan' => $id );
 			// echo "<pre>"; var_dump($data);

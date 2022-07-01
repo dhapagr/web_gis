@@ -234,7 +234,7 @@
                                                         </h4>
                                                         <div class="input-group">
                                                             <select class="select2" name="type" required>
-                                                                <option value="" disabled selected hidden>Pilih Kecamatan</option>
+                                                                <option value="" disabled selected hidden>Type Kejadian</option>
                                                                 <?php foreach ($data_type as $type) :?>
                                                                     <option value="<?php echo $type['id_type'] ?>"><?php echo$type['type_kejadian'] ?></option>
                                                                 <?php endforeach ?>

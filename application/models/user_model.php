@@ -64,4 +64,25 @@ class User_model extends CI_Model
 		$this->db->where('id_pengaduan', $id_pengaduan);
 		return $this->db->get()->result_array();
 	}
+	function titik_rawan()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_kecelakaan');
+		$this->db->where('prosentase', 'berat');
+		return $this->db->get()->result_array();
+	}
+	function titik_sedang()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_kecelakaan');
+		$this->db->where('prosentase', 'sedang');
+		return $this->db->get()->result_array();
+	}
+	function titik_ringan()
+	{
+		$this->db->select('*');
+		$this->db->from('tb_kecelakaan');
+		$this->db->where('prosentase', 'ringan');
+		return $this->db->get()->result_array();
+	}
 }

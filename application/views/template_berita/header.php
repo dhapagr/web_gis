@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Web GIS Berita</title>
+        <!-- <title>Web GIS Berita</title> -->
         <!-- plugin css for this page -->
         <link
         rel="stylesheet"
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="<?=base_url()?>assets/berita/vendors/aos/dist/aos.css/aos.css" />
 
         <!-- End plugin css for this page -->
-        <link rel="shortcut icon" href="<?=base_url()?>assets/berita/images/favicon.png" />
+        <!-- <link rel="shortcut icon" href="<?=base_url()?>assets/berita/images/favicon.png" /> -->
 
         <!-- inject:css -->
         <link rel="stylesheet" href="<?=base_url()?>assets/berita/css/style.css">
