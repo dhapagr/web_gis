@@ -21,10 +21,10 @@ class Data_wilayah extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		if ($this->session->userdata("id_user") == NULL) 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		// $this->load->view('component/v_dashboard');
 
@@ -56,7 +56,7 @@ class Data_wilayah extends CI_Controller {
 		$this->admin_model->insert_table($table, $data);
 		$this->session->set_flashdata('test', 
 				'<script>swal("Sukses","Data berhasil ditambahkan","success");</script>');
-		redirect(base_url("admin/data_wilayah"));
+		redirect(base_url("admin/Data_wilayah"));
 	}
 	// function hapus_data_wilayah($id_data = true)
 	// {
@@ -71,7 +71,7 @@ class Data_wilayah extends CI_Controller {
 		$this->admin_model->hapus_data($where,'tb_kelurahan');
 		$this->session->set_flashdata('test', 
 				'<script>swal("Sukses","Data berhasil dihapus","success");</script>');
-		redirect('admin/data_wilayah');
+		redirect('admin/Data_wilayah');
 	}
 	function update_data_wilayah($id)
 	{
@@ -82,6 +82,6 @@ class Data_wilayah extends CI_Controller {
 		$this->db->update('tb_kelurahan', $data, array('id_kelurahan' => $id ));
 		// $this->admin_model->update_table('tb_kelurahan', $data, array('id_kelurahan' => $id ));
 		// $this->session->set_flashdata('item', '<div class="btn btn-outline-success mr-1 mb-1" id="progress-bar"></div>');
-		redirect('admin/data_wilayah');
+		redirect('admin/Data_wilayah');
 	}
 }

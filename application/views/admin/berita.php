@@ -13,7 +13,7 @@
                     <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                     <div class="breadcrumb-wrapper d-none d-sm-block">
                         <ol class="breadcrumb p-0 mb-0 pl-1">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active">Data Berita
                             </li>
@@ -32,13 +32,13 @@
                                 <h4 class="text-primary">Tabel Berita</h4>
                             </div>
                             <div class="ml-2">
-                                <a href="<?php echo base_url("admin/berita/add"); ?>">
+                                <a href="<?php echo base_url("admin/Berita/add"); ?>">
                                     <button type="button" class="btn btn-success glow mr-1 mb-1">
                                         <i class="bx bxs-down-arrow-square"></i>
                                         <span class="align-middle ml-25">Tambah Data</span>
                                     </button>
                                 </a>
-                                <!-- <a href="<?php echo base_url("admin/berita/test"); ?>">
+                                <!-- <a href="<?php echo base_url("admin/Berita/test"); ?>">
                                     <button type="button" class="btn btn-primary glow mr-1 mb-1">
                                         <i class="bx bxs-down-arrow-square"></i>
                                         <span class="align-middle ml-25">Tambah Data</span>
@@ -82,7 +82,7 @@
                                                             >
                                                             <label for="colorCheckbox<?= $j++?>"></label>
                                                         </div>
-                                                        <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="window.location.href='<?php echo base_url('admin/berita/edit/'.$data['id_berita']) ?>'"><i class="bx bx-edit" ></i></button>
+                                                        <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="window.location.href='<?php echo base_url('admin/Berita/edit/'.$data['id_berita']) ?>'"><i class="bx bx-edit" ></i></button>
                                                         <button type="button" class="btn btn-icon btn-danger mr-1 mb-1" onclick="hapus(<?php echo $data['id_berita'] ?>)"><i class="bx bxs-trash"></i></button>
                                                     </div>    
                                                 </td>
@@ -106,7 +106,7 @@
         $('.tampil-tidak').click(function() {
             var id_berita = $(this).val();
             $.ajax({
-				url: "<?php echo base_url('admin/berita/status/') ?>" + id_berita,
+				url: "<?php echo base_url('admin/Berita/status/') ?>" + id_berita,
                 success: function(response) {
                     if(response == 1){
                         $('#status'+id_berita).text('Tampil');
@@ -134,7 +134,7 @@
             buttonsStyling: false,
         }).then(function (result) {
             if (result.value) {
-                window.location = "<?php echo base_url('admin/berita/hapus/') ?>" + id_berita;
+                window.location = "<?php echo base_url('admin/Berita/hapus/') ?>" + id_berita;
             }
             else if (result.dismiss === Swal.DismissReason.cancel) {
             

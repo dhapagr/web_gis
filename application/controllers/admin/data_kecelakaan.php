@@ -6,10 +6,10 @@ class Data_kecelakaan extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		if ($this->session->userdata("role_user") != 'admin') 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		// $this->load->view('component/v_dashboard');
 
@@ -64,7 +64,7 @@ class Data_kecelakaan extends CI_Controller {
 		$this->admin_model->insert_table($table, $data);
 		$this->session->set_flashdata('test', 
 				'<script>swal("Sukses","Data berhasil ditambahkan","success");</script>');
-		redirect(base_url("admin/data_kecelakaan"));
+		redirect(base_url("admin/Data_kecelakaan"));
 	}
 	function hapus($id){
 		$where = array('id_kecelakaan' => $id);
@@ -82,7 +82,7 @@ class Data_kecelakaan extends CI_Controller {
 				buttonsStyling: false,
 			})
 		</script>');
-		redirect('admin/data_kecelakaan');
+		redirect('admin/Data_kecelakaan');
 	}
 
 	function edit($id)
@@ -169,7 +169,7 @@ class Data_kecelakaan extends CI_Controller {
 					buttonsStyling: false,
 				})
 			</script>');
-			redirect(base_url()."admin/data_kecelakaan");
+			redirect(base_url()."admin/Data_kecelakaan");
 		}
 		else{
 
@@ -210,7 +210,7 @@ class Data_kecelakaan extends CI_Controller {
 					buttonsStyling: false,
 				})
 			</script>');
-			redirect('admin/data_kecelakaan');
+			redirect('admin/Data_kecelakaan');
 		}
 				
 	}
@@ -240,7 +240,7 @@ class Data_kecelakaan extends CI_Controller {
 			){
 			$this->session->set_flashdata('test', 
 				'<script>swal("info","Tidak Ada Perubahan Data","info");</script>');
-			redirect(base_url()."admin/data_kecelakaan");
+			redirect(base_url()."admin/Data_kecelakaan");
 		
 		}else{
 
@@ -262,7 +262,7 @@ class Data_kecelakaan extends CI_Controller {
 			$this->db->update('tb_kecelakaan', $data, $where);
 			$this->session->set_flashdata('test', 
 					'<script>swal("Sukses","Data berhasil Diubah","success");</script>');
-			redirect('admin/data_kecelakaan');
+			redirect('admin/Data_kecelakaan');
 		}
 	}
 

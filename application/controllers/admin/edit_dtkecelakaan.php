@@ -5,10 +5,10 @@ class Edit_dtkecelakaan extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		if ($this->session->userdata("id_user") == NULL) 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 
 		// $this->load->view('component/v_dashboard');
@@ -29,6 +29,6 @@ class Edit_dtkecelakaan extends CI_Controller {
 	function edit($id)
 	{
 		$data= $this->db->query("SELECT * FROM tb_kecelakaan WHERE id_kecelakaan = '$id'")->result_array();
-		redirect('admin/edit_dtkecelakaan', $data);
+		redirect('admin/Edit_dtkecelakaan', $data);
 	}
 }

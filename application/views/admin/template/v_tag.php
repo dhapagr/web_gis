@@ -18,7 +18,7 @@
                     <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                     <div class="breadcrumb-wrapper d-none d-sm-block">
                         <ol class="breadcrumb p-0 mb-0 pl-1">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active">Tag Berita
                             </li>
@@ -85,7 +85,7 @@
                         <div class="modal-header">
                             <h3 class="modal-title" id="myModalLabel1">Tambah Tag Berita</h3>
                         </div>
-                        <form action="<?php echo base_url('admin/tag/add');?>" method=POST enctype="multipart/form-data">
+                        <form action="<?php echo base_url('admin/Tag/add');?>" method=POST enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="col-12">
                                     <div class="form-group row align-items-center">
@@ -131,7 +131,7 @@
             buttonsStyling: false,
         }).then(function (result) {
             if (result.value) {
-                window.location = "<?php echo base_url('admin/tag/hapus/') ?>" + id_tag;
+                window.location = "<?php echo base_url('admin/Tag/hapus/') ?>" + id_tag;
             }
         })
     }

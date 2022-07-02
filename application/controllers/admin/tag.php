@@ -6,10 +6,10 @@ class Tag extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		if ($this->session->userdata("role_user") != 'admin') 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		// $this->load->view('component/v_dashboard');
 	}
@@ -44,7 +44,7 @@ class Tag extends CI_Controller {
                 buttonsStyling: false,
             })
         </script>');
-		redirect(base_url("admin/tag"));
+		redirect(base_url("admin/Tag"));
 	}
     function hapus($id){
 		$where = array('id_tag' => $id);
@@ -62,6 +62,6 @@ class Tag extends CI_Controller {
 						buttonsStyling: false,
 					})
 				</script>');
-		redirect('admin/tag');
+		redirect('admin/Tag');
 	}
 }

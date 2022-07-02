@@ -21,7 +21,7 @@
   <section id="cta" class="cta">
     <div class="container" >
       <div id="hero" class="d-flex align-items-center">
-        <div id="cta" class="cta">
+        <div id="cta" class="ctawelcome">
           <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
               <div class="d-flex justify-content-center">
@@ -147,7 +147,7 @@
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
   
-            <form action="<?php echo base_url('user/feedback/add'); ?>" enctype="multipart/form-data" role="form" method="post" class="php-email-form" id="form_feedback">
+            <form action="<?php echo base_url('user/Feedback/add'); ?>" enctype="multipart/form-data" role="form" method="post" class="php-email-form" id="form_feedback">
               <div>
                 <div class="section-title">
                   <h4>FEEDBACK</h4>
@@ -308,7 +308,7 @@
       var kec = $('#kecamatan').val();			
               if (kec != '') {
         $.ajax({
-          url: "<?php echo base_url('user/webgis/getKel') ?>",
+          url: "<?php echo base_url('user/Webgis/getKel') ?>",
           type: "POST",
           data: {
             kecamatan: kec
@@ -330,7 +330,7 @@
        
         if (data != '') {
             $.ajax({
-                url: "<?php echo base_url('user/webgis/filter_kecamatan/') ?>"+data,
+                url: "<?php echo base_url('user/Webgis/filter_kecamatan/') ?>"+data,
                 success: function (data) {
                   var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
                     var redMarker = L.icon({
@@ -384,7 +384,7 @@
       var data = $('#kelurahan').val();
         if (data != '') {
             $.ajax({
-                url: "<?php echo base_url('user/webgis/filter_kelurahan/') ?>"+data,
+                url: "<?php echo base_url('user/Webgis/filter_kelurahan/') ?>"+data,
                 success: function (data) {
                   var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
                     var redMarker = L.icon({

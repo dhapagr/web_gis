@@ -31,7 +31,7 @@
                         <div>
 
                             <?php echo $this->session->flashdata('pesan') ?>
-                            <form id="jquery-val-form" action="<?php echo base_url('admin/welcome/prosesLogin'); ?>" method="post" enctype="multipart/form-data">
+                            <form id="jquery-val-form" action="<?php echo base_url('admin/Welcome/prosesLogin'); ?>" method="post" enctype="multipart/form-data">
                                 <center>
                                     <div class="dashboard-content-right">   
                                         <img class="img-fluid" src="<?php echo base_url("assets"); ?>/admin/images/pages/Logo-DIR-Lantas-Polri.png" height="200" width="200" class="img-fluid" alt="Dashboard Ecommerce"/>

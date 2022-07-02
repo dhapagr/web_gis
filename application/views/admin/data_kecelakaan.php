@@ -13,7 +13,7 @@
                         <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                         <div class="breadcrumb-wrapper d-none d-sm-block">
                             <ol class="breadcrumb p-0 mb-0 pl-1">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                                 </li>
                                 <li class="breadcrumb-item active">Data Kecelakaan
                                 </li>
@@ -33,7 +33,7 @@
                                         <h4 class="card-title">Data Kecelakaan | Tabel Data Kecelakaan</h4>
                                     </div>
                                     <div class="ml-2">
-                                        <a href="<?= base_url('admin/data_kecelakaan/add_view'); ?>">
+                                        <a href="<?= base_url('admin/Data_kecelakaan/add_view'); ?>">
                                             <button type="button" class="btn btn-success glow mr-1 mb-1">
                                                 <i class="bx bxs-down-arrow-square"></i>
                                                 <span class="align-middle ml-25">Tambah Data</span>
@@ -64,7 +64,7 @@
                                                     foreach ($data_wilayah as $data) :
                                                     ?>
                                                     <tr>
-                                                        <form action="<?php echo base_url("admin/data_kecelakaan/edit/".$data['id_kecelakaan']);?>" method=POST enctype="multipart/form-data">
+                                                        <form action="<?php echo base_url("admin/Data_kecelakaan/edit/".$data['id_kecelakaan']);?>" method=POST enctype="multipart/form-data">
 
                                                             <td><?php echo $no++ ?></td>
                                                             <td><?= $data['nama_jalan'] ?></td>
@@ -96,7 +96,7 @@
                                                             <td>
                                                                 <div  class="form-row">
                                                                     <button type="button" class="btn btn-icon btn-info mr-1 mb-1" data-toggle="modal" data-target="#myModal<?= $data['id_kecelakaan']?>"><i class="bx bx-info-circle"></i></button>
-                                                                    <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="window.location.href='<?php echo base_url('admin/data_kecelakaan/edit/'.$data['id_kecelakaan']) ?>'"><i class="bx bx-edit" ></i></button>
+                                                                    <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="window.location.href='<?php echo base_url('admin/Data_kecelakaan/edit/'.$data['id_kecelakaan']) ?>'"><i class="bx bx-edit" ></i></button>
                                                                     <button type="button" onclick="hapus(<?php echo $data['id_kecelakaan'] ?>)" class="btn btn-icon btn-danger mr-1 mb-1"><i class="bx bxs-trash"></i></button>
                                                                 </div>                                       
                                                             </td> 
@@ -225,7 +225,7 @@
                         <h4 class="modal-title" id="myModalLabel16">Informasi Data Kecelakaan</h4>
                     </div>
                         <div class="modal-body">
-                            <embed src="<?php echo base_url('admin/data_kecelakaan/export/'.$data['id_kecelakaan']) ?>" frameborder="0" width="100%" height="400px">
+                            <embed src="<?php echo base_url('admin/Data_kecelakaan/export/'.$data['id_kecelakaan']) ?>" frameborder="0" width="100%" height="400px">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light-danger" data-dismiss="modal">
@@ -245,7 +245,7 @@
 				var kec = $('#kecamatan').val();			
                 if (kec != '') {
 					$.ajax({
-						url: "<?php echo base_url('admin/data_kecelakaan/getKel') ?>",
+						url: "<?php echo base_url('admin/Data_kecelakaan/getKel') ?>",
 						type: "POST",
 						data: {
 							kecamatan: kec
@@ -423,7 +423,7 @@
                 buttonsStyling: false,
             }).then(function (result) {
                 if (result.value) {
-                    window.location = "<?php echo base_url('admin/data_kecelakaan/hapus/') ?>" + id_kecelakaan;
+                    window.location = "<?php echo base_url('admin/Data_kecelakaan/hapus/') ?>" + id_kecelakaan;
                 }
                 else if (result.dismiss === Swal.DismissReason.cancel) {
                 

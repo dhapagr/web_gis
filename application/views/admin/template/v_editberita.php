@@ -10,7 +10,7 @@
                     <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                     <div class="breadcrumb-wrapper d-none d-sm-block">
                         <ol class="breadcrumb p-0 mb-0 pl-1">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active">Data Berita
                             </li>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="card-body">
                                 <?php foreach ($data_by_id as $data) : ?>
-                                <form id="jquery-val-form" method="post" enctype="multipart/form-data" action="<?php echo base_url('admin/berita/edit_berita/'.$data['id_berita']);?>">
+                                <form id="jquery-val-form" method="post" enctype="multipart/form-data" action="<?php echo base_url('admin/Berita/edit_berita/'.$data['id_berita']);?>">
                                     <div class="form-group row align-items-center">
                                         <div class="col-lg-2 col-3">
                                             <label for="first-name" class="col-form-label">JUDUL</label>

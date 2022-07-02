@@ -6,12 +6,12 @@ class Data_user extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
-		$this->load->model('superadmin_model');
+		$this->load->model('Admin_model');
+		$this->load->model('Superadmin_model');
 		// $this->load->model('superadmin_model');
 		if ($this->session->userdata("role_user") != "superadmin") 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		// $this->load->view('component/v_dashboard');
 	}
@@ -132,7 +132,7 @@ class Data_user extends CI_Controller {
 					buttonsStyling: false,
 				})
 			</script>');
-			redirect('superadmin/data_user');
+			redirect('superadmin/Data_user');
 		}
 	}
 	public function update($id)
@@ -511,7 +511,7 @@ class Data_user extends CI_Controller {
 				</script>');
 			}
 			$session_flash;
-			redirect('superadmin/data_user');
+			redirect('superadmin/Data_user');
 	}
 	function hapus($id){
 		$where = array('id_user' => $id);
@@ -529,6 +529,6 @@ class Data_user extends CI_Controller {
 						buttonsStyling: false,
 					})
 				</script>');
-		redirect('superadmin/data_user');
+		redirect('superadmin/Data_user');
 	}
 }

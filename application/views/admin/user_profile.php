@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-8">
-                                    <form method="post" action="<?php echo base_url('admin/user_profile/update/'.$data['id_user']) ?>" enctype="multipart/form-data">
+                                    <form method="post" action="<?php echo base_url('admin/User_profile/update/'.$data['id_user']) ?>" enctype="multipart/form-data">
                                         <h6>
                                             <i class="step-icon"></i>
                                             <span class="fonticon-wrap">

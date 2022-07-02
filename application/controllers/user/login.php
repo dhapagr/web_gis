@@ -6,7 +6,7 @@ class Login extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('auth_model');
+		$this->load->model('Auth_model');
 	}
 	public function index()
     {
@@ -47,14 +47,14 @@ class Login extends CI_Controller {
 							Swal.fire("Gagal","Password yang Anda masukkan salah!","error")
 						</script>'
 					);
-					redirect('user/login');
+					redirect('user/Login');
 				}else{
 					$this->session->set_userdata('email', $auth->email);
 					$this->session->set_userdata('role_user', $auth->role_user);
 					$this->session->set_userdata('id_user', $auth->id_user);
 					$this->session->set_userdata('nama', $auth->nama);
 
-					redirect('user/pengaduan/');
+					redirect('user/Pengaduan/');
 				}
 			}
 		}else {
@@ -63,7 +63,7 @@ class Login extends CI_Controller {
 					Swal.fire("Gagal","Captcha wajib diisi!","error")
 				</script>'
 			);
-			redirect('user/login');
+			redirect('user/Login');
 		}
 	}
 

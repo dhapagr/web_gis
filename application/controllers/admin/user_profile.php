@@ -6,10 +6,10 @@ class User_profile extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		if ($this->session->userdata("role_user") != 'admin') 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		// $this->load->view('component/v_dashboard');
 	}
@@ -239,7 +239,7 @@ class User_profile extends CI_Controller {
 			);
 		}
 		$ession_flash;
-		redirect('admin/user_profile');
+		redirect('admin/User_profile');
 	}
 	public function test()
 	{

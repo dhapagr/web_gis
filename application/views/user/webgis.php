@@ -231,7 +231,7 @@
       var kec = $('#kecamatan').val();			
               if (kec != '') {
         $.ajax({
-          url: "<?php echo base_url('user/webgis/getKel') ?>",
+          url: "<?php echo base_url('user/Webgis/getKel') ?>",
           type: "POST",
           data: {
             kecamatan: kec
@@ -253,7 +253,7 @@
        
         if (data != '') {
             $.ajax({
-                url: "<?php echo base_url('user/webgis/filter_kecamatan/') ?>"+data,
+                url: "<?php echo base_url('user/Webgis/filter_kecamatan/') ?>"+data,
                 success: function (data) {
                   var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
                     var redMarker = L.icon({
@@ -307,7 +307,7 @@
       var data = $('#kelurahan').val();
         if (data != '') {
             $.ajax({
-                url: "<?php echo base_url('user/webgis/filter_kelurahan/') ?>"+data,
+                url: "<?php echo base_url('user/Webgis/filter_kelurahan/') ?>"+data,
                 success: function (data) {
                   var imgDir = '<?php echo base_url("assets"); ?>/user/img/'
                     var redMarker = L.icon({

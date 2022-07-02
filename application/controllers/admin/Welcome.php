@@ -51,11 +51,11 @@ class Welcome extends CI_Controller {
 			$_SESSION['ses_kcfinder']['uploadURL'] = "../content_upload";
 
 			//	$this->session->set_flashdata('data','<div class="alert alert-success">Berhasil Masuk</div>');
-			redirect('admin/dashboard');
+			redirect('admin/Dashboard');
 		} else {
 			// echo "<script>alert('Gagal login: Cek username, password!');history.go(-1);</script>";
 			$this->session->set_flashdata('error', 'Username atau Password tidak valid');
-        	redirect('admin/welcome');
+        	redirect('admin/Welcome');
 		}
 	}
 
@@ -80,17 +80,17 @@ class Welcome extends CI_Controller {
 					});
 				</script>'
 				);
-                redirect('admin/welcome');
+                redirect('admin/Welcome');
             } else {
                 $this->session->set_userdata('email_user', $auth->email_user);
                 $this->session->set_userdata('role_user', $auth->role_user);
                 $this->session->set_userdata('id_user', $auth->id_user);
                 switch ($auth->role_user) {
                     case 'admin':
-						redirect('admin/dashboard');
+						redirect('admin/Dashboard');
                         break;
                     case 'superadmin':
-                        redirect('superadmin/dashboard');
+                        redirect('superadmin/Dashboard');
                         break;
                     default:
                         break;
@@ -103,6 +103,6 @@ class Welcome extends CI_Controller {
 	{
 		//$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
-		redirect('admin/welcome', 'refresh');
+		redirect('admin/Welcome', 'refresh');
 	}
 }

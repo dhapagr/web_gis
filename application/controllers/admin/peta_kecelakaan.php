@@ -21,10 +21,10 @@ class Peta_kecelakaan extends CI_Controller {
 	public function __construct()
 	{
         parent::__construct();
-        $this->load->model('admin_model');
+        $this->load->model('Admin_model');
 		if ($this->session->userdata("id_user") == NULL) 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
         // $this->load->view('component/v_dashboard');
 	}

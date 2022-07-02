@@ -7,7 +7,7 @@
                     <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                     <div class="breadcrumb-wrapper d-none d-sm-block">
                         <ol class="breadcrumb p-0 mb-0 pl-1">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active">Konten
                             </li>
@@ -30,7 +30,7 @@
                         <div id="collapse1" role="tabpanel" aria-labelledby="headingCollapse1" class="collapse">
                             <div class="card-body">
                                 <table class="table">
-                                    <form method="post" action="<?php echo base_url('admin/tema/edit_tema') ?>" enctype="multipart/form-data">
+                                    <form method="post" action="<?php echo base_url('admin/Tema/edit_tema') ?>" enctype="multipart/form-data">
                                             <div class="modal-body">
                                                 <div class="card-body">
                                                     <ul class="list-unstyled mb-0">

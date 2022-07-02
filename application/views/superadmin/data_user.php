@@ -23,7 +23,7 @@
                         <h5 class="content-header-title float-left pr-1 mb-0">Super Admin</h5>
                         <div class="breadcrumb-wrapper d-none d-sm-block">
                             <ol class="breadcrumb p-0 mb-0 pl-1">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url("superadmin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url("superadmin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                                 </li>
                                 <li class="breadcrumb-item active">Data User
                                 </li>
@@ -130,7 +130,7 @@
                                                         </td>
                                                         <td>
                                                             <div  class="form-row">
-                                                                <!-- <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="window.location.href='<?php echo base_url('superadmin/data_user/edit_view/'.$dt_admin['id_user']) ?>'"><i class="bx bx-edit" ></i></button> -->
+                                                                <!-- <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="window.location.href='<?php echo base_url('superadmin/Data_user/edit_view/'.$dt_admin['id_user']) ?>'"><i class="bx bx-edit" ></i></button> -->
                                                                 <button type="button" class="btn btn-icon btn-warning mr-1 mb-1" onclick="edit(<?php echo $dt_admin['id_user'] ?>)"><i class="bx bx-edit" ></i></button>
                                                                 <button type="button" class="btn btn-icon btn-danger mr-1 mb-1" onclick="hapus(<?php echo $dt_admin['id_user'] ?>)"><i class="bx bxs-trash"></i></button>
                                                             </div>   
@@ -155,7 +155,7 @@
                                         <h4 class="card-title">Form Add Data User</h4>
                                     </div><hr>
                                     <div class="card-body">
-                                        <form id="jquery-val-form" method="post" action="<?php echo base_url('superadmin/data_user/tambah_data') ?>" enctype="multipart/form-data">
+                                        <form id="jquery-val-form" method="post" action="<?php echo base_url('superadmin/Data_user/tambah_data') ?>" enctype="multipart/form-data">
                                             <div>
                                                 <h6 class="card-title">Akun User</h6>
                                             </div>
@@ -254,7 +254,7 @@
                                         <h4 class="card-title">Form Edit Data User</h4>
                                     </div><hr>
                                     <div class="card-body">
-                                        <form id="jquery-val-form" class="submit<?= $dt_admin['id_user']?>" method="post" action="<?php echo base_url('superadmin/data_user/update/'.$dt_admin['id_user']) ?>" enctype="multipart/form-data">
+                                        <form id="jquery-val-form" class="submit<?= $dt_admin['id_user']?>" method="post" action="<?php echo base_url('superadmin/Data_user/update/'.$dt_admin['id_user']) ?>" enctype="multipart/form-data">
                                             <div>
                                                 <h6 class="card-title">Akun User</h6>
                                             </div>
@@ -392,7 +392,7 @@
                 buttonsStyling: false,
             }).then(function (result) {
                 if (result.value) {
-                    window.location = "<?php echo base_url('superadmin/data_user/hapus/') ?>" + id_user;
+                    window.location = "<?php echo base_url('superadmin/Data_user/hapus/') ?>" + id_user;
                 }
                 else{
                     var isRtl = $('html').attr('data-textdirection') === 'rtl';
@@ -410,7 +410,7 @@
             //     })
             //     .then((willDelete) => {
             //     if (willDelete) {
-            //         window.location = "<?php echo base_url('superadmin/data_user/hapus/') ?>" + id_user;
+            //         window.location = "<?php echo base_url('superadmin/Data_user/hapus/') ?>" + id_user;
             //     } else {
             //         var isRtl = $('html').attr('data-textdirection') === 'rtl';
             //         $(document).ready(function(){

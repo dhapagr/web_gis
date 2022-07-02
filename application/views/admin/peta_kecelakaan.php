@@ -20,7 +20,7 @@
                         <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                         <div class="breadcrumb-wrapper d-none d-sm-block">
                             <ol class="breadcrumb p-0 mb-0 pl-1">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                                 </li>
                                 <li class="breadcrumb-item"><a>Peta Digital</a>
                                 </li>
@@ -96,7 +96,7 @@
 				var kec = $('#kecamatan').val();			
                 if (kec != '') {
 					$.ajax({
-						url: "<?php echo base_url('admin/peta_kecelakaan/getKel') ?>",
+						url: "<?php echo base_url('admin/Peta_kecelakaan/getKel') ?>",
 						type: "POST",
 						data: {
 							kecamatan: kec
@@ -169,7 +169,7 @@
        
                 if (data != '') {
                     $.ajax({
-                        url: "<?php echo base_url('admin/peta_kecelakaan/filter_kecamatan/') ?>"+data,
+                        url: "<?php echo base_url('admin/Peta_kecelakaan/filter_kecamatan/') ?>"+data,
                         success: function (data) {
                                 
                             $(".leaflet-marker-icon").remove();
@@ -212,7 +212,7 @@
 				var data = $('#kelurahan').val();
                 if (data != '') {
                     $.ajax({
-                        url: "<?php echo base_url('admin/peta_kecelakaan/filter_kelurahan/') ?>"+data,
+                        url: "<?php echo base_url('admin/Peta_kecelakaan/filter_kelurahan/') ?>"+data,
                         success: function (data) {
                             $(".leaflet-marker-icon").remove();
                             $(".leaflet-popup").remove();

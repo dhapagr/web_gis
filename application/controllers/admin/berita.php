@@ -6,10 +6,10 @@ class Berita extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		if ($this->session->userdata("role_user") != 'admin') 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		date_default_timezone_set('Asia/Jakarta');
 		// $this->load->view('component/v_dashboard');
@@ -72,7 +72,7 @@ class Berita extends CI_Controller {
 			);
 		}		
 		else{
-			redirect(base_url("admin/berita/add"));
+			redirect(base_url("admin/Berita/add"));
 		}
 		
 		// echo "<pre>"; var_dump($data);
@@ -81,7 +81,7 @@ class Berita extends CI_Controller {
 		$this->admin_model->insert_table($table ,$data);
 		$this->session->set_flashdata('test', 
 				'<script>swal("Sukses","Data berhasil ditambahkan","success");</script>');
-		redirect(base_url("admin/berita"));
+		redirect(base_url("admin/Berita"));
 	} 
 	public function edit($id)
 	{
@@ -200,7 +200,7 @@ class Berita extends CI_Controller {
 				buttonsStyling: false,
 			})
 		</script>');
-		redirect('admin/berita');
+		redirect('admin/Berita');
 	}
 	function hapus($id){
 		$where = array('id_berita' => $id);
@@ -218,7 +218,7 @@ class Berita extends CI_Controller {
 				buttonsStyling: false,
 			})
 		</script>');
-		redirect('admin/berita');
+		redirect('admin/Berita');
 	}
 	public function status($id_berita)
 	{	

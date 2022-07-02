@@ -25,7 +25,7 @@
                         <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                         <div class="breadcrumb-wrapper d-none d-sm-block">
                             <ol class="breadcrumb p-0 mb-0 pl-1">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                                 </li>
                                 <li class="breadcrumb-item"><a>Peta Digital</a>
                                 </li>
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="card-body"> 
                                     <?php foreach ($data_lokasi as $key) : ?>
-                                    <form method="post" action="<?php echo base_url('admin/peta_lokasi/update_lokasi') ?>" enctype="multipart/form-data">
+                                    <form method="post" action="<?php echo base_url('admin/Peta_lokasi/update_lokasi') ?>" enctype="multipart/form-data">
                                         <div class="form-row">
                                             <div class="col-md-3 col-sm-12 form-group"> 
                                                 <label for="validationTooltip01">Longitude</label> 

@@ -10560,7 +10560,7 @@ header .navbar-bottom .navbar-toggler {
 }
 
 .content-wrapper .banner-content {
-  /* position: absolute; */
+  position: relative;
   padding: 40px 60px;
   left: 0px;
   bottom: 0px;

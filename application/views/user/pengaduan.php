@@ -151,11 +151,11 @@
 
     <!-- form pengaduan -->
     <section id="cta" class="cta">
-        <div class="container" data-aos="zoom-in">
+        <div  data-aos="zoom-in" >
             <div class="row">
                 <div class="text-center" class="col-lg-3 cta-btn2-container text-center">
                     <?php if($this->session->userdata('nama') == ''):?>
-                        <a class="cta-btn2 align-middle w-600" href="<?php echo base_url('user/login'); ?>">BUAT PENGADUAN</a>
+                        <a class="cta-btn2 align-middle w-600" href="<?php echo base_url('user/Login'); ?>">BUAT PENGADUAN</a>
                     <?php else: 
                         echo $this->session->flashdata('pesan_pengaduan');
                         $riw_input = $this->session->flashdata('input');
@@ -166,7 +166,7 @@
                                     <h4><b class="text-secondary">Form Pengaduan</b></span>
                                 </div>
                                 <div class="card-body">
-                                    <form action="<?= base_url('user/pengaduan/post_pengaduan/')?>" method="POST" enctype="multipart/form-data">
+                                    <form action="<?= base_url('user/Pengaduan/post_pengaduan/')?>" method="POST" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-lg-6 mb-3">
                                                 <div class="form-group mb-3" align="left">

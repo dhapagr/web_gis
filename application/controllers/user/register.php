@@ -96,7 +96,7 @@ class Register extends CI_Controller {
 						Swal.fire("Sukses","Akun berhasil dibuat. Silakan login untuk masuk.","success")
 					</script>'
 				);
-				redirect('user/login/');
+				redirect('user/Login/');
 			}
 		}
 	}

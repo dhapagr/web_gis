@@ -21,12 +21,12 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
-		$this->load->model('superadmin_model');
+		$this->load->model('Admin_model');
+		$this->load->model('Superadmin_model');
 		// $this->load->model('superadmin_model');
 		if ($this->session->userdata("role_user") != "superadmin") 
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 		// $this->load->view('component/v_dashboard');
 	}

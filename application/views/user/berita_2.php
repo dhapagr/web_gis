@@ -90,7 +90,7 @@
                         <h2>Kategori</h2>
                         <ul class="vertical-menu">
                             <?php foreach($tag as $tagar): ?>
-                            <li><a href="<?= base_url('user/berita/kategori/'.$tagar['nama_tag'])?>"><?= $tagar['nama_tag']?></a></li>
+                            <li><a href="<?= base_url('user/Berita/kategori/'.$tagar['nama_tag'])?>"><?= $tagar['nama_tag']?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -151,10 +151,10 @@
                                         if($new){
                                             // tampil kata max 25
                                             $new = implode(" ", $new);
-                                            echo $new.' ... <a style="color: deepskyblue;" href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
+                                            echo $new.' ... <a style="color: deepskyblue;" href="'.base_url("user/Berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                         }else {
                                             // tampil semua kata
-                                            echo $random['isi_berita'].' ... <a style="color: deepskyblue;" href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
+                                            echo $random['isi_berita'].' ... <a style="color: deepskyblue;" href="'.base_url("user/Berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                         }
                                     ?>
                                 </p>
@@ -234,7 +234,7 @@
         $('.berita-link').on('click', function(){
             var judul   = $(this).text()
             var param = judul.replace(/ /gi, "-")
-            window.location.href="<?=base_url('user/berita/detail_berita/')?>"+param
+            window.location.href="<?=base_url('user/Berita/detail_berita/')?>"+param
         })
 
         $('.video-link').on('click', function(){

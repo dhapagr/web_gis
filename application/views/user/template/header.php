@@ -70,21 +70,21 @@
 <header id="header" class="fixed-top ">
   <div class="container d-flex align-items-center">    
     <div class="col-lg-1 col-md-1 col-1 d-flex justify-content-center">
-      <img style="width:75px; height:50px;" src="<?php echo base_url("assets"); ?>/user/img/Kota-madiun.png" class="img-fluid" alt="">
+      <img style="min-width: 60px ; width:60%; height:50px;" src="<?php echo base_url("assets"); ?>/user/img/Kota-madiun.png" class="img-fluid" alt="">
     </div>
-    <h1 class="logo me-auto"><a href="index.html">SIGMA</a></h1>
+    <h1 class="logo me-auto" style = "margin-left : 20px;"><a href="index.html">SIGMA</a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html" class="logo me-auto"><img src="<?php echo base_url("assets"); ?>/user/img/logo.png" alt="" class="img-fluid"></a>-->
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto " href="<?php echo base_url("welcome"); ?>">Home</a></li>
-        <li><a class="nav-link scrollto" href="<?php echo base_url("user/pengaduan"); ?>">Pengaduan</a></li>
-        <li><a class="nav-link scrollto" href="<?php echo base_url("user/webgis"); ?>">Webgis</a></li>
-        <li><a class="nav-link scrollto" href="<?php echo base_url("user/berita"); ?>">Portal Berita</a></li>
+        <li><a class="nav-link scrollto " href="<?php echo base_url("Welcome"); ?>">Home</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo base_url("user/Pengaduan"); ?>">Pengaduan</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo base_url("user/Webgis"); ?>">Webgis</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo base_url("user/Berita"); ?>">Portal Berita</a></li>
         <li><a class="nav-link scrollto" href="#footer">Kontak</a></li>
         <?php if($this->session->userdata('nama') == ''):?>
-          <li><a  href="<?php echo base_url("user/login"); ?>">Login</a></li>
+          <li><a  href="<?php echo base_url("user/Login"); ?>">Login</a></li>
         <?php else: ?>
           <li>
             <a class="nav-link scrollto" href="javascript:js_logout();">
@@ -109,7 +109,7 @@
         cancelButtonText: 'Tidak'
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href="<?= base_url('user/login/logout_umum')?>";
+          window.location.href="<?= base_url('user/Login/logout_umum')?>";
         }
       });
     }

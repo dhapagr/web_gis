@@ -57,7 +57,7 @@
                                 </li>
                                 <li class="scrollable-container media-list">
                                     <?php foreach($data as $pengaduan): ?>
-                                        <a class="d-flex justify-content-between" href="<?= base_url('admin/data_laporan/pengaduan_blm_tambah_modal/'.$pengaduan['id_pengaduan'])?>">
+                                        <a class="d-flex justify-content-between" href="<?= base_url('admin/Data_laporan/pengaduan_blm_tambah_modal/'.$pengaduan['id_pengaduan'])?>">
                                             <div class="media d-flex align-items-center">
                                                 <div class="media-left pr-0">
                                                     <div class="avatar mr-1 m-0">
@@ -74,7 +74,7 @@
                                         </a>
                                     <?php endforeach; ?>
                                 </li>
-                                <li class="dropdown-menu-footer"><a class="dropdown-item p-50 text-primary justify-content-center" href="<?=base_url('admin/data_laporan/pengaduan_blm_jwb/')?>">Lihat Semua Pengaduan Baru</a></li>
+                                <li class="dropdown-menu-footer"><a class="dropdown-item p-50 text-primary justify-content-center" href="<?=base_url('admin/Data_laporan/pengaduan_blm_jwb/')?>">Lihat Semua Pengaduan Baru</a></li>
                             </ul>
                         </li>
                         <li class="dropdown dropdown-user nav-item">
@@ -94,7 +94,7 @@
                                     <?php endforeach;?>
                                 </div>
                                 <hr> -->
-                                <div class="dropdown-divider mb-0"></div><a class="dropdown-item" href="<?php echo base_url('admin/welcome/logout')?>"><i class="bx bx-power-off mr-50"></i> Logout</a>
+                                <div class="dropdown-divider mb-0"></div><a class="dropdown-item" href="<?php echo base_url('admin/Welcome/logout')?>"><i class="bx bx-power-off mr-50"></i> Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -109,7 +109,7 @@
         <br>
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?php echo base_url("admin/dashboard"); ?>">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="<?php echo base_url("admin/Dashboard"); ?>">
                         <div class="brand-logo">
                             <svg class="logo" width="26px" height="26px" viewbox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>icon</title>
@@ -149,41 +149,41 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" data-icon-style="lines">
                 <li class=" navigation-header text-truncate"><span data-i18n="Apps">Dashboard</span>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) === 'dashboard') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="menu-livicon" data-icon="desktop"></i><span class="menu-title text-truncate">Dashboard</span></a>
+                <li class="<?php echo ($this->uri->segment(2) === 'dashboard') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="menu-livicon" data-icon="desktop"></i><span class="menu-title text-truncate">Dashboard</span></a>
                 </li>
                 <li class=" navigation-header text-truncate"><span data-i18n="Apps">Fitur</span>
                 </li>
                 <li class=" nav-item"><a href=""><i class="menu-livicon" data-icon="map"></i><span class="menu-title text-truncate" data-i18n="Dashboard">Peta Digital</span></a>
                     <ul class="menu-content">
-                        <li class="<?php echo ($this->uri->segment(2) === 'peta_lokasi') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/peta_lokasi"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Peta Kota</span></a>
+                        <li class="<?php echo ($this->uri->segment(2) === 'peta_lokasi') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/Peta_lokasi"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Peta Kota</span></a>
                         </li>
-                        <li class="<?php echo ($this->uri->segment(2) === 'peta_kecelakaan') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/peta_kecelakaan/"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Analytics">Peta Titik Rawan</span></a>
+                        <li class="<?php echo ($this->uri->segment(2) === 'peta_kecelakaan') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/Peta_kecelakaan/"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Analytics">Peta Titik Rawan</span></a>
                         </li>
                     </ul>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) === 'data_kecelakaan') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/data_kecelakaan"); ?>"><i class="menu-livicon" data-icon="briefcase"></i><span class="menu-title text-truncate" data-i18n="Chat">Data Kecelakaan</span></a>
+                <li class="<?php echo ($this->uri->segment(2) === 'data_kecelakaan') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/Data_kecelakaan"); ?>"><i class="menu-livicon" data-icon="briefcase"></i><span class="menu-title text-truncate" data-i18n="Chat">Data Kecelakaan</span></a>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) === 'data_wilayah') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/data_wilayah"); ?>"><i class="menu-livicon" data-icon="grid"></i><span class="menu-title text-truncate" data-i18n="Todo">Data Wilayah</span></a>
+                <li class="<?php echo ($this->uri->segment(2) === 'data_wilayah') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/Data_wilayah"); ?>"><i class="menu-livicon" data-icon="grid"></i><span class="menu-title text-truncate" data-i18n="Todo">Data Wilayah</span></a>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) === 'data_laporan') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/data_laporan"); ?>"><i class="menu-livicon" data-icon="warning-alt"></i><span class="menu-title text-truncate" data-i18n="Sweet Alert">Data Laporan</span></a>
+                <li class="<?php echo ($this->uri->segment(2) === 'data_laporan') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/Data_laporan"); ?>"><i class="menu-livicon" data-icon="warning-alt"></i><span class="menu-title text-truncate" data-i18n="Sweet Alert">Data Laporan</span></a>
                 </li>
-                <!-- <li class="<?php echo ($this->uri->segment(2) === 'berita') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/berita"); ?>"><i class="menu-livicon" data-icon="globe"></i><span class="menu-title text-truncate" data-i18n="i18n">Berita</span></a>
+                <!-- <li class="<?php echo ($this->uri->segment(2) === 'berita') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/Berita"); ?>"><i class="menu-livicon" data-icon="globe"></i><span class="menu-title text-truncate" data-i18n="i18n">Berita</span></a>
                 </li> -->
                 <li class=" nav-item"><a href=""><i class="menu-livicon" data-icon="globe"></i><span class="menu-title text-truncate" data-i18n="Dashboard">Berita</span></a>
                     <ul class="menu-content">
-                        <li class="<?php echo ($this->uri->segment(2) === 'berita') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/berita"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Data Berita</span></a>
+                        <li class="<?php echo ($this->uri->segment(2) === 'berita') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/Berita"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="eCommerce">Data Berita</span></a>
                         </li>
-                        <li class="<?php echo ($this->uri->segment(2) === 'tag') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/tag"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Analytics">Tag Berita</span></a>
+                        <li class="<?php echo ($this->uri->segment(2) === 'tag') ? 'active' : '' ?> nav-item"><a class="d-flex align-items-center" href="<?php echo base_url("admin/Tag"); ?>"><i class="bx bx-right-arrow-alt"></i><span class="menu-item text-truncate" data-i18n="Analytics">Tag Berita</span></a>
                         </li>
                     </ul>
                 </li>
                 <li class=" navigation-header text-truncate"><span data-i18n="Apps">Setting</span>
                 </li>
-                <li class="<?php echo ($this->uri->segment(2) === 'tema') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/tema"); ?>"><i class="menu-livicon" data-icon="settings"></i><span class="menu-title text-truncate" data-i18n="i18n">Konten</span></a>
+                <li class="<?php echo ($this->uri->segment(2) === 'tema') ? 'active' : '' ?> nav-item"><a href="<?php echo base_url("admin/Tema"); ?>"><i class="menu-livicon" data-icon="settings"></i><span class="menu-title text-truncate" data-i18n="i18n">Konten</span></a>
                 </li>
                 <!-- <li class=" nav-item"><a href=""><i class="menu-livicon" data-icon="user"></i><span class="menu-title text-truncate" data-i18n="User Profile">User Profile</span></a>
                 </li>  -->
-                <li class=" nav-item"><a href="<?php echo base_url("admin/user_profile"); ?>"><i class="menu-livicon" data-icon="user"></i><span class="menu-title text-truncate" data-i18n="User Profile">User Profile</span></a>
+                <li class=" nav-item"><a href="<?php echo base_url("admin/User_profile"); ?>"><i class="menu-livicon" data-icon="user"></i><span class="menu-title text-truncate" data-i18n="User Profile">User Profile</span></a>
                 </li> 
             </ul>
         </div>

@@ -6,7 +6,7 @@ class Berita extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('model_berita');
+		$this->load->model('Model_berita');
 		$this->load->library('user_agent');
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -20,6 +20,8 @@ class Berita extends CI_Controller {
 		$data['video_berita']	= $this->model_berita->get_video_random()->result_array();
 		$data['video_terbaru']	= $this->model_berita->get_video_terbaru()->result_array();
 		// echo json_encode($data['berita_banner']); exit;
+		// echo print_r($data['berita_banner']);
+		// exit;
 		$this->load->view('template_berita/header');
 		// $this->load->view('template_berita/navbar');
 		$this->load->view('user/template/header');
@@ -68,9 +70,9 @@ class Berita extends CI_Controller {
 		$data['tranding']	= $this->model_berita->get_berita_banner();// tranding
 
 		$this->load->view('template_berita/header');
-		$this->load->view('template_berita/navbar');
+		$this->load->view('user/template/header');
 		$this->load->view('user/kategori_berita', $data);
-		$this->load->view('template_berita/footer');
+		$this->load->view('user/template/footer');
 	}
 
 	public function detail_berita($param)
@@ -111,8 +113,8 @@ class Berita extends CI_Controller {
 		$data['tranding']	= $this->model_berita->get_berita_banner();// tranding
 
 		$this->load->view('template_berita/header');
-		$this->load->view('template_berita/navbar');
+		$this->load->view('user/template/header');
 		$this->load->view('user/detail_berita', $data);
-		$this->load->view('template_berita/footer');
+		$this->load->view('user/template/footer');
 	}
 }

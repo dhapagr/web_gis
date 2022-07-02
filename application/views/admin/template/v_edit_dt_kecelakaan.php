@@ -19,7 +19,7 @@
                     <div class="breadcrumb-wrapper d-none d-sm-block">
                         <ol class="breadcrumb p-0 mb-0 pl-1">
                         <!-- <?php foreach ($data_all as $key) : ?> -->
-                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active">Edit Data Kecelakaan  
                                 <!-- <label for="basicInput" ><?php echo base_url($key['id_kecelakaan'])?></label> -->
@@ -82,7 +82,7 @@
                     <div class="card icon-tab">
                         <div class="card-body mt-2"> 
                             <?php foreach ($data_by_id as $data) : ?>
-                                <form method="post" action="<?php echo base_url('admin/data_kecelakaan/update/'.$data['id_kecelakaan']) ?>" enctype="multipart/form-data" class="wizard-horizontal">
+                                <form method="post" action="<?php echo base_url('admin/Data_kecelakaan/update/'.$data['id_kecelakaan']) ?>" enctype="multipart/form-data" class="wizard-horizontal">
                                     <h6>
                                         <i class="step-icon"></i>
                                         <span class="fonticon-wrap">
@@ -640,7 +640,7 @@
 				var kec = $('#kecamatan').val();			
                 if (kec != '') {
 					$.ajax({
-						url: "<?php echo base_url('admin/data_kecelakaan/getKel') ?>",
+						url: "<?php echo base_url('admin/Data_kecelakaan/getKel') ?>",
 						type: "POST",
 						data: {
 							kecamatan: kec
@@ -671,7 +671,7 @@
             buttonsStyling: false,
         }).then(function (result) {
             if (result.value) {
-                window.location = "<?php echo base_url('admin/data_kecelakaan') ?>" ;
+                window.location = "<?php echo base_url('admin/Data_kecelakaan') ?>" ;
             }
             else if (result.dismiss === Swal.DismissReason.cancel) {
                
@@ -686,7 +686,7 @@
             //     })
             //     .then((willDelete) => {
             //     if (willDelete) {
-            //         window.location = "<?php echo base_url('admin/data_kecelakaan') ?>" ;
+            //         window.location = "<?php echo base_url('admin/Data_kecelakaan') ?>" ;
             //     } else {
             //         // swal("Data Tidak Terhapus !");
             //     }

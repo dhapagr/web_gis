@@ -13,12 +13,25 @@ class Model_berita extends CI_Model
         $this->db->group_by('id_berita');
         $this->db->order_by('count(*)', 'desc');
         $data = $this->db->get()->result_array();
-        $id_berita = $data[0]['id_berita'];
+        // $id_berita = $data[0]['id_berita'];
 
-        $this->db->select('*');
-        $this->db->from('tb_berita');
-        $this->db->where('id_berita', $id_berita);
-        return $this->db->get()->row();
+        if ($data == null)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_berita');
+            $this->db->order_by('rand()');
+            $this->db->limit(1);
+            return $this->db->get()->row();
+        }
+        else
+        {
+            $id_berita = $data[0]['id_berita'];
+            $this->db->select('*');
+            $this->db->from('tb_berita');
+            $this->db->where('id_berita', $id_berita);
+            return $this->db->get()->row();
+        }
+        
     }
 
     public function get_berita_terbaru()

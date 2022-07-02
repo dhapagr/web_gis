@@ -37,7 +37,7 @@
                     </div><br>
                     <?= $this->session->flashdata('sukses_registrasi')?>
                     <script src="https://www.google.com/recaptcha/api.js"></script>
-                    <form class="myform" action="<?= base_url('user/login/auth')?>" enctype="multipart/form-data" method="POST">
+                    <form class="myform" action="<?= base_url('user/Login/auth')?>" enctype="multipart/form-data" method="POST">
                         <div class="form-group mb-3">
                             <input type="email" class="form-control" name="email" placeholder="Email">
                             <?= form_error('email', '<div class="text-danger small ml-2" style="margin-top: -20px;">', '</div>') ?>
@@ -59,7 +59,7 @@
                                     <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12 bn"><a href="<?php echo base_url("user/register"); ?>">Register</a></div>
+                            <div class="col-md-6 col-12 bn"><a href="<?php echo base_url("user/Register"); ?>">Register</a></div>
                         </div>
                         <div class="form-group mt-3 d-flex justify-content-center">
                             <button type="submit" class="btn btn-block btn-primary btn-lg"><small class="mr-1"><i class="far fa-user"></i>Login</small></button>

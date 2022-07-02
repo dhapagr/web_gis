@@ -21,7 +21,7 @@
                     <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                     <div class="breadcrumb-wrapper d-none d-sm-block">
                         <ol class="breadcrumb p-0 mb-0 pl-1">
-                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active">Data Kecelakaan
                             </li>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form method="post" action="<?php echo base_url('admin/data_kecelakaan/tambah_data') ?>" enctype="multipart/form-data" id="test"> 
+                                <form method="post" action="<?php echo base_url('admin/Data_kecelakaan/tambah_data') ?>" enctype="multipart/form-data" id="test"> 
                                     <div class="row">
                                         <div class="col-12">
                                             <h6 class="card-title">
@@ -543,7 +543,7 @@
 			var kec = $('#kecamatan').val();			
             if (kec != '') {
 				$.ajax({
-					url: "<?php echo base_url('admin/data_kecelakaan/getKel') ?>",
+					url: "<?php echo base_url('admin/Data_kecelakaan/getKel') ?>",
 					type: "POST",
 					data: {
 						kecamatan: kec
@@ -569,7 +569,7 @@
         })
         .then((willDelete) => {
             if (willDelete) {
-                window.location = "<?php echo base_url('admin/data_kecelakaan') ?>" ;
+                window.location = "<?php echo base_url('admin/Data_kecelakaan') ?>" ;
             } else {
             // swal("Data Tidak Terhapus !");
             }

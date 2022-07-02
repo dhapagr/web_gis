@@ -335,7 +335,12 @@ body {
   #hero {
     width: 100%;
     height: 80vh;
-    background: #37517e;
+    background: rgba(0, 0, 0, 0) fixed center center;
+  }
+  #heru {
+    width: 100%;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0) fixed center center;  
   }
   #hero .container {
     padding-top: 72px;
@@ -835,6 +840,11 @@ body {
   .cta {
     background: linear-gradient(rgba(24, 45, 85, 0.626), rgba(24, 45, 85, 0.626)), url("../img/traveling-map-with-golden-pins.jpg") fixed center center;
     background-size: cover;
+    padding: 120px 0;
+  }
+  .ctawelcome
+  {
+    background: rgba(0, 0, 0, 0) fixed center center;
     padding: 120px 0;
   }
   .ctalogin {

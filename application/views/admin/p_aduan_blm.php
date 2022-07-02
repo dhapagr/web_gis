@@ -7,7 +7,7 @@
                         <h5 class="content-header-title float-left pr-1 mb-0">Admin</h5>
                         <div class="breadcrumb-wrapper d-none d-sm-block">
                             <ol class="breadcrumb p-0 mb-0 pl-1">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url("admin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                                 </li>
                                 <li class="breadcrumb-item ">Data Laporan | Data laporanback
                             </ol>
@@ -22,10 +22,10 @@
                         <div class="card-body">
                             <ul class="nav user-profile-nav justify-content-center justify-content-md-start nav-pills border-bottom-0 mb-0" role="tablist">
                                 <li class="nav-item mb-0">
-                                    <a class=" nav-link d-flex px-1" href="<?=base_url('admin/data_laporan/')?>" aria-selected="true"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Terjawab</span></a>
+                                    <a class=" nav-link d-flex px-1" href="<?=base_url('admin/Data_laporan/')?>" aria-selected="true"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Terjawab</span></a>
                                 </li>
                                 <li class="nav-item mb-0">
-                                    <a class="nav-link d-flex px-1 active" href="<?=base_url('admin/data_laporan/pengaduan_blm_jwb/')?>" role="tab" aria-selected="false"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Belum Terjawab</span></a>
+                                    <a class="nav-link d-flex px-1 active" href="<?=base_url('admin/Data_laporan/pengaduan_blm_jwb/')?>" role="tab" aria-selected="false"><i class="bx bxs-message-rounded-dots"></i><span class="d-none d-md-block">Pengaduan Belum Terjawab</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -117,7 +117,7 @@
         var id_pengaduan = <?=$id_pengaduan?>;
         if(id_pengaduan != ""){
             $.ajax({
-                url: "<?=base_url('admin/data_laporan/get_detail_pengaduan/')?>"+id_pengaduan,
+                url: "<?=base_url('admin/Data_laporan/get_detail_pengaduan/')?>"+id_pengaduan,
                 success: function (response) {
                     $('#tempel-modal').html(response);
                     $('#modal-detail-pengaduan').modal('show');
@@ -128,7 +128,7 @@
         $('.detail').on('click', function(){
             var id_pengaduan = $(this).data('id');
             $.ajax({
-                url: "<?=base_url('admin/data_laporan/get_detail_pengaduan/')?>"+id_pengaduan,
+                url: "<?=base_url('admin/Data_laporan/get_detail_pengaduan/')?>"+id_pengaduan,
                 success: function (response) {
                     $('#tempel-modal').html(response);
                     $('#modal-detail-pengaduan').modal('show');
@@ -139,7 +139,7 @@
         $('.edit').on('click', function(){
             var id_pengaduan = $(this).data('id');
             $.ajax({
-                url: "<?=base_url('admin/data_laporan/edit_pengaduan/')?>"+id_pengaduan,
+                url: "<?=base_url('admin/Data_laporan/edit_pengaduan/')?>"+id_pengaduan,
                 success: function (response) {
                     $('#tempel-modal').html(response);
                     $('#modal-edit-pengaduan').modal('show');
@@ -152,7 +152,7 @@
             let text = "Apakah anda yakin ingin menghapus pengaduan ini ?";
             if (confirm(text) == true) {
                 $.ajax({
-                    url: "<?=base_url('admin/data_laporan/hapus_pengaduan/')?>"+id_pengaduan,
+                    url: "<?=base_url('admin/Data_laporan/hapus_pengaduan/')?>"+id_pengaduan,
                     success: function (response) {
                         if(response == 1){
                             $('#row'+id_pengaduan).remove();
@@ -176,7 +176,7 @@
         var jawaban = $('#jawaban').val();
         if(jawaban != ""){
             $.ajax({
-                url: "<?=base_url('admin/data_laporan/simpan_jawaban/')?>"+id_pengaduan,
+                url: "<?=base_url('admin/Data_laporan/simpan_jawaban/')?>"+id_pengaduan,
                 type: "POST",
                 data: {jawaban: jawaban},
                 success: function (response) {

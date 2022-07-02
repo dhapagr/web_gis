@@ -6,12 +6,12 @@ class Data_laporan extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin_model');
-		$this->load->model('user_model');
+		$this->load->model('Admin_model');
+		$this->load->model('User_model');
 		date_default_timezone_set('Asia/Jakarta'); 
 		if ($this->session->userdata("role_user") != "admin")
 		{
-			redirect('admin/welcome');
+			redirect('admin/Welcome');
 		}
 	}
     public function index()

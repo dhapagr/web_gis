@@ -4,6 +4,7 @@
         cursor: pointer;
     }
 </style>
+<section id="cta" class="ctalogin"></section>
 <div class="content-wrapper">
     <div class="container berita-kategori">
         <div class="col-sm-12 card-kategori">
@@ -58,10 +59,10 @@
                                                 if($new){
                                                     // tampil kata max 25
                                                     $new = implode(" ", $new);
-                                                    echo $new.' ... <a href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
+                                                    echo $new.' ... <a href="'.base_url("user/Berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                                 }else {
                                                     // tampil semua kata
-                                                    echo $berita['isi_berita'].' ... <a href="'.base_url("user/berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
+                                                    echo $berita['isi_berita'].' ... <a href="'.base_url("user/Berita/detail_berita/".$judul).'">Baca Selengkapnya</a>';
                                                 }
                                             ?>
                                         </p>
@@ -161,7 +162,7 @@
         $('.berita-link').on('click', function(){
             var judul   = $(this).text()
             var param = judul.replace(/ /gi, "-")
-            window.location.href="<?=base_url('user/berita/detail_berita/')?>"+param
+            window.location.href="<?=base_url('user/Berita/detail_berita/')?>"+param
         })
     });
 </script>

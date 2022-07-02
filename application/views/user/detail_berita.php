@@ -4,6 +4,7 @@
         cursor: pointer;
     }
 </style>
+<section id="cta" class="ctalogin"></section>
 <div class="content-wrapper">
     <div class="container detail-berita">
         <div class="col-sm-12 card-berita">

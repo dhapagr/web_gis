@@ -6,7 +6,7 @@ class Pengaduan extends CI_Controller {
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('User_model');
 		date_default_timezone_set('Asia/Jakarta');
 		$this->load->library('pagination');
 	}
@@ -82,7 +82,7 @@ class Pengaduan extends CI_Controller {
 	{
 		$user = $this->session->userdata('role_user');
 		if($user != 'umum'){
-			redirect('user/pengaduan/');
+			redirect('user/Pengaduan/');
 		}else{
 			$subjek		= $this->input->post('subjek');
 			$pesan		= $this->input->post('pesan');
@@ -111,7 +111,7 @@ class Pengaduan extends CI_Controller {
 							Swal.fire("Sukses","Pengaduan berhasil terkirim.","success");
 						</script>'
 					);
-					redirect('user/pengaduan/');
+					redirect('user/Pengaduan/');
 				}else{
 					// Terdapat gambar
 					$data2 = [];
@@ -123,7 +123,7 @@ class Pengaduan extends CI_Controller {
 									Swal.fire("Gagal","Format gambar tidak sesuai","error");
 								</script>'
 							);
-							redirect('user/pengaduan/');
+							redirect('user/Pengaduan/');
 						}else{
 							$_FILES['file']['name']     = $_FILES['gambar']['name'][$i];
 							$_FILES['file']['type']     = $_FILES['gambar']['type'][$i];
@@ -168,7 +168,7 @@ class Pengaduan extends CI_Controller {
 										Swal.fire("Gagal","Format gambar tidak sesuai","error");
 									</script>'
 								);
-								redirect('user/pengaduan/');
+								redirect('user/Pengaduan/');
 							}
 						} 
 					endfor;
@@ -178,7 +178,7 @@ class Pengaduan extends CI_Controller {
 							Swal.fire("Sukses","Pengaduan berhasil terkirim.","success");
 						</script>'
 					);
-					redirect('user/pengaduan/');
+					redirect('user/Pengaduan/');
 				}
 			}else{
 				$this->session->set_flashdata('input_kosong', $data);
@@ -187,7 +187,7 @@ class Pengaduan extends CI_Controller {
 						Swal.fire("Peringatan","Semua form input wajib di isi!","warning");
 					</script>'
 				);
-				redirect('user/pengaduan/');
+				redirect('user/Pengaduan/');
 			}
 		}
 	}

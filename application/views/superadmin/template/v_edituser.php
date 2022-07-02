@@ -7,7 +7,7 @@
                         <h5 class="content-header-title float-left pr-1 mb-0">Super Admin</h5>
                         <div class="breadcrumb-wrapper d-none d-sm-block">
                             <ol class="breadcrumb p-0 mb-0 pl-1">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url("superadmin/dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url("superadmin/Dashboard"); ?>"><i class="bx bx-home-alt"></i></a>
                                 </li>
                                 <li class="breadcrumb-item active">Data User 
                                 </li>
@@ -29,7 +29,7 @@
                                         <h4 class="card-title">Form Add Data User</h4>
                                     </div><hr>
                                     <div class="card-body">
-                                        <form id="jquery-val-form" method="post" action="<?php echo base_url('superadmin/data_user/tambah_data_testing') ?>" enctype="multipart/form-data">
+                                        <form id="jquery-val-form" method="post" action="<?php echo base_url('superadmin/Data_user/tambah_data_testing') ?>" enctype="multipart/form-data">
                                             <div>
                                                 <h6 class="card-title">Akun User</h6>
                                             </div>

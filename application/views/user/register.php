@@ -27,7 +27,7 @@
                 <div class="panel-body">
                 <?php 
                     $pesan = $this->session->flashdata('pesan_register')?>
-                    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="<?= base_url('user/register/registrasi') ?>">
+                    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="<?= base_url('user/Register/registrasi') ?>">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="d-flex justify-content-center">
@@ -128,7 +128,7 @@
                         <div class="d-flex justify-content-center mt-5">
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Registrasi Akun</button>
-                                <a href="<?= base_url("user/login")?>" class="btn btn-danger">Login</a>
+                                <a href="<?= base_url("user/Login")?>" class="btn btn-danger">Login</a>
                             </div>
                         </div>
                     </form>
