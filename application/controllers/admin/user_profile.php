@@ -17,7 +17,7 @@ class User_profile extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');	
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
 		$this->load->view('admin/template/navigation_admin', $data);
 		$this->load->view('admin/user_profile', $data);
 		$this->load->view('admin/template/footer_admin');

@@ -33,8 +33,8 @@ class Peta_lokasi extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');	
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$data['data_lokasi'] 		= $this->Admin_model->tampil_data_lokasi()->result_array();
 		$this->load->view('admin/template/navigation_admin', $data);
 		$this->load->view('admin/peta_lokasi', $data);
 		$this->load->view('admin/template/footer_admin');
@@ -48,7 +48,7 @@ class Peta_lokasi extends CI_Controller {
 			'latitude' => $this->input->post('latitude'),
 			'ketinggian' => $this->input->post('height'),
 		);
-		$this->admin_model->update_table('tb_lokasi', $data, array('id_lokasi' => 1));
+		$this->Admin_model->update_table('tb_lokasi', $data, array('id_lokasi' => 1));
 		$this->session->set_flashdata('success', 
 		'<script>
 			Swal.fire({

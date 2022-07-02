@@ -34,8 +34,8 @@ class Peta_lokasi extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');	
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->superadmin_model->get_dataById($id_user);
-		$data['data_lokasi'] 		= $this->superadmin_model->tampil_data_lokasi()->result_array();
+		$data['data_user']			= $this->Superadmin_model->get_dataById($id_user);
+		$data['data_lokasi'] 		= $this->Superadmin_model->tampil_data_lokasi()->result_array();
 		$this->load->view('superadmin/template/navigation_admin', $data);
 		$this->load->view('superadmin/peta_lokasi', $data);
 		$this->load->view('superadmin/template/footer_admin');

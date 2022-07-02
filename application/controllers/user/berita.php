@@ -14,11 +14,11 @@ class Berita extends CI_Controller {
 	public function index()
 	{	
 		$data['tag']			= $this->db->get('tb_tag')->result_array();
-		$data['berita_banner']	= $this->model_berita->get_berita_banner(); //tranding
-		$data['berita_terbaru']	= $this->model_berita->get_berita_terbaru()->result_array();
-		$data['berita_random']	= $this->model_berita->get_berita_random()->result_array();
-		$data['video_berita']	= $this->model_berita->get_video_random()->result_array();
-		$data['video_terbaru']	= $this->model_berita->get_video_terbaru()->result_array();
+		$data['berita_banner']	= $this->Model_berita->get_berita_banner(); //tranding
+		$data['berita_terbaru']	= $this->Model_berita->get_berita_terbaru()->result_array();
+		$data['berita_random']	= $this->Model_berita->get_berita_random()->result_array();
+		$data['video_berita']	= $this->Model_berita->get_video_random()->result_array();
+		$data['video_terbaru']	= $this->Model_berita->get_video_terbaru()->result_array();
 		// echo json_encode($data['berita_banner']); exit;
 		// echo print_r($data['berita_banner']);
 		// exit;
@@ -58,16 +58,16 @@ class Berita extends CI_Controller {
 
 		// pengaturan pagination  
 		$config['base_url'] = base_url('user/berita/kategori/'.$param.'/');
-		$config['total_rows'] = $this->model_berita->hitung_berita_kategori($id_kategori->id_tag);
+		$config['total_rows'] = $this->Model_berita->hitung_berita_kategori($id_kategori->id_tag);
 		$config['per_page'] = 4;
 		$choice = $config["total_rows"] / $config["per_page"];
         $config["num_links"] = floor($choice);
 		$from = $this->uri->segment(5);
 		$this->pagination->initialize($config);		
 
-		$data['kategori_berita'] = $this->model_berita->get_berita_kategori($config['per_page'], $from, $id_kategori->id_tag);
-		$data['berita_terbaru']	= $this->model_berita->get_berita_terbaru()->result_array();
-		$data['tranding']	= $this->model_berita->get_berita_banner();// tranding
+		$data['kategori_berita'] = $this->Model_berita->get_berita_kategori($config['per_page'], $from, $id_kategori->id_tag);
+		$data['berita_terbaru']	= $this->Model_berita->get_berita_terbaru()->result_array();
+		$data['tranding']	= $this->Model_berita->get_berita_banner();// tranding
 
 		$this->load->view('template_berita/header');
 		$this->load->view('user/template/header');
@@ -109,8 +109,8 @@ class Berita extends CI_Controller {
 
 		// tampil data
 		$data['berita'] = $detail_berita;
-		$data['berita_terbaru']	= $this->model_berita->get_berita_terbaru()->result_array();
-		$data['tranding']	= $this->model_berita->get_berita_banner();// tranding
+		$data['berita_terbaru']	= $this->Model_berita->get_berita_terbaru()->result_array();
+		$data['tranding']	= $this->Model_berita->get_berita_banner();// tranding
 
 		$this->load->view('template_berita/header');
 		$this->load->view('user/template/header');

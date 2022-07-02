@@ -8,7 +8,7 @@ class Data_user extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Admin_model');
 		$this->load->model('Superadmin_model');
-		// $this->load->model('superadmin_model');
+		// $this->load->model('Superadmin_model');
 		if ($this->session->userdata("role_user") != "superadmin") 
 		{
 			redirect('admin/Welcome');
@@ -18,10 +18,10 @@ class Data_user extends CI_Controller {
 	public function index()
 	{
 		$id_user = $this->session->userdata('id_user');	
-		$data['data_user']			= $this->superadmin_model->get_dataById($id_user);
+		$data['data_user']			= $this->Superadmin_model->get_dataById($id_user);
         $data['detail']		    	= $this->db->get('tb_user')->result_array();
-        $data['admin_detail']		= $this->superadmin_model->get_data_admin()->result_array();
-        $data['spadmin_detail']		= $this->superadmin_model->get_data_superadmin()->result_array();
+        $data['admin_detail']		= $this->Superadmin_model->get_data_admin()->result_array();
+        $data['spadmin_detail']		= $this->Superadmin_model->get_data_superadmin()->result_array();
 		$this->load->view('superadmin/template/header_admin');
 		$this->load->view('superadmin/template/navigation_admin', $data);
 		$this->load->view('superadmin/data_user', $data);
@@ -30,7 +30,7 @@ class Data_user extends CI_Controller {
 	public function edit_view($id)
 	{	
 		$id_user = $this->session->userdata('id_user');		
-		$data['data_user']			= $this->superadmin_model->get_dataById($id_user);
+		$data['data_user']			= $this->Superadmin_model->get_dataById($id_user);
 		// $data['data_by_id']			= $this->admin_model->get_dtkec($id)->result_array();
 		$data['detail_user'] 		= $this->db->query("SELECT * FROM tb_user WHERE id_user = '$id'")->result_array();
 		$this->load->view('superadmin/template/header_admin');
@@ -57,10 +57,10 @@ class Data_user extends CI_Controller {
 				})	
 			</script>');
 			$id_user = $this->session->userdata('id_user');	
-			$data['data_user']			= $this->superadmin_model->get_dataById($id_user);
+			$data['data_user']			= $this->Superadmin_model->get_dataById($id_user);
 			$data['detail']		    	= $this->db->get('tb_user')->result_array();
-			$data['admin_detail']		= $this->superadmin_model->get_data_admin()->result_array();
-			$data['spadmin_detail']		= $this->superadmin_model->get_data_superadmin()->result_array();
+			$data['admin_detail']		= $this->Superadmin_model->get_data_admin()->result_array();
+			$data['spadmin_detail']		= $this->Superadmin_model->get_data_superadmin()->result_array();
 			$this->load->view('superadmin/template/header_admin');
 			$this->load->view('superadmin/template/navigation_admin', $data);
 			$this->load->view('superadmin/data_user', $data);
@@ -86,7 +86,7 @@ class Data_user extends CI_Controller {
 				);
 				// echo "<pre>"; var_dump($pwd);
 				// exit;
-				$this->superadmin_model->insert_table('tb_user', $data);
+				$this->Superadmin_model->insert_table('tb_user', $data);
 			}
 			else
 			{
@@ -117,7 +117,7 @@ class Data_user extends CI_Controller {
 					);
 					// echo "<pre>"; var_dump($data);
 					// exit;
-					$this->superadmin_model->insert_table('tb_user', $data);
+					$this->Superadmin_model->insert_table('tb_user', $data);
 				}
 			}
 			$this->session->set_flashdata('test', 
@@ -516,7 +516,7 @@ class Data_user extends CI_Controller {
 	function hapus($id){
 		$where = array('id_user' => $id);
 		$this->db->delete('tb_user', $where);
-		// $this->superadmin_model->hapus_data($where,'tb_user');
+		// $this->Superadmin_model->hapus_data($where,'tb_user');
 		$this->session->set_flashdata('test', 
 				'<script>
 					Swal.fire({

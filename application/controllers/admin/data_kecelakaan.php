@@ -19,11 +19,11 @@ class Data_kecelakaan extends CI_Controller {
 		$id_user = $this->session->userdata('id_user');		
 		// $this->load->view('admin/template/navigation_admin',$data);
 		$this->load->view('admin/template/header_admin');
-		// $data['data_kecamatan']	= $this->admin_model->tampil_data_kecamatan()->result_array();
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
+		// $data['data_kecamatan']	= $this->Admin_model->tampil_data_kecamatan()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$data['data_lokasi'] 		= $this->Admin_model->tampil_data_lokasi()->result_array();
 		$data['data_kecelakaan'] 	= $this->db->get('tb_kecelakaan')->result_array();
-		$data['data_wilayah']		= $this->admin_model->tampil_data_kecelakaan()->result_array();
+		$data['data_wilayah']		= $this->Admin_model->tampil_data_kecelakaan()->result_array();
 		$data['data_kecamatan'] 	= $this->db->get('tb_kecamatan')->result_array();
 
 		$this->load->view('admin/template/navigation_admin', $data);
@@ -61,7 +61,7 @@ class Data_kecelakaan extends CI_Controller {
 		// echo "<pre>"; var_dump($data);
 		// exit;
 		$table = "tb_kecelakaan";
-		$this->admin_model->insert_table($table, $data);
+		$this->Admin_model->insert_table($table, $data);
 		$this->session->set_flashdata('test', 
 				'<script>swal("Sukses","Data berhasil ditambahkan","success");</script>');
 		redirect(base_url("admin/Data_kecelakaan"));
@@ -69,7 +69,7 @@ class Data_kecelakaan extends CI_Controller {
 	function hapus($id){
 		$where = array('id_kecelakaan' => $id);
 		$this->db->delete('tb_kecelakaan', $where);
-		$this->admin_model->hapus_data($where,'tb_kecelakaan');
+		$this->Admin_model->hapus_data($where,'tb_kecelakaan');
 		$this->session->set_flashdata('test', 
 		'<script>
 			Swal.fire({
@@ -90,11 +90,11 @@ class Data_kecelakaan extends CI_Controller {
 		// $where = $this->db->where('id_kecelakaan',$id);
 		$id_user = $this->session->userdata('id_user');		
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
-		$data['data_kecelakaan'] 	= $this->admin_model->get_data_kecelakaan();
-		$data['data_laka']			= $this->admin_model->tampil_data_kecelakaan()->result_array();
-		$data['data_by_id']			= $this->admin_model->get_dtkec2($id)->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$data['data_lokasi'] 		= $this->Admin_model->tampil_data_lokasi()->result_array();
+		$data['data_kecelakaan'] 	= $this->Admin_model->get_data_kecelakaan();
+		$data['data_laka']			= $this->Admin_model->tampil_data_kecelakaan()->result_array();
+		$data['data_by_id']			= $this->Admin_model->get_dtkec2($id)->result_array();
 		$data['data_kecamatan'] 	= $this->db->get('tb_kecamatan')->result_array();
 		$data['data_kelurahan'] 	= $this->db->get('tb_kelurahan')->result_array();
 		$data['data_waktu']		 	= $this->db->get('tb_wkt')->result_array();
@@ -270,7 +270,7 @@ class Data_kecelakaan extends CI_Controller {
 	{
 		$id_kecamatan = $this->input->post('kecamatan');
 		if ($id_kecamatan != null) {
-			$kelurahan = $this->admin_model->get_kelurahan_where($id_kecamatan)->result_array();
+			$kelurahan = $this->Admin_model->get_kelurahan_where($id_kecamatan)->result_array();
 			$drop = '<option hidden>Pilih Kelurahan</option>';
 			foreach ($kelurahan as $kel) {
 				$drop = $drop . '<option value="' . $kel['id_kelurahan'] . '">' . $kel['nama_kelurahan'] . '</option>';
@@ -283,7 +283,7 @@ class Data_kecelakaan extends CI_Controller {
 	public function export($id)
 	{
 		$this->load->library('dompdf_gen');
-		$data['data_export']	= $this->admin_model->get_dtkec($id)->result_array();
+		$data['data_export']	= $this->Admin_model->get_dtkec($id)->result_array();
 		$data['title']			=
 		$this->load->view('admin/template/header_admin');
 		$this->load->view('admin/template/file_export', $data);
@@ -303,11 +303,11 @@ class Data_kecelakaan extends CI_Controller {
 	{	
 		$id_user = $this->session->userdata('id_user');		
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$data['data_lokasi'] 		= $this->Admin_model->tampil_data_lokasi()->result_array();
 		$data['data_kecelakaan'] 	= $this->db->get('tb_kecelakaan')->result_array();
-		$data['data_wilayah']		= $this->admin_model->tampil_data_kecelakaan()->result_array();
-		$data['data_kecamatan']		= $this->admin_model->tampil_data_kecamatan()->result_array();
+		$data['data_wilayah']		= $this->Admin_model->tampil_data_kecelakaan()->result_array();
+		$data['data_kecamatan']		= $this->Admin_model->tampil_data_kecamatan()->result_array();
 		$data['data_waktu']		 	= $this->db->get('tb_wkt')->result_array();
 		$data['data_kendaraan']		= $this->db->get('tb_jeniskendaraan')->result_array();
 		$data['data_profesi']		= $this->db->get('tb_profesikorban')->result_array();
@@ -321,9 +321,9 @@ class Data_kecelakaan extends CI_Controller {
 	// {
 	// 	$this->load->view('admin/template/header_admin');
 	// 	// $this->load->view('admin/template/navigation_admin');
-	// 	$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
+	// 	$data['data_lokasi'] 		= $this->Admin_model->tampil_data_lokasi()->result_array();
 	// 	$data['data_kecelakaan'] 	= $this->db->get('tb_kecelakaan')->result_array();
-	// 	$data['data_wilayah']		= $this->admin_model->tampil_data_kecelakaan()->result_array();
+	// 	$data['data_wilayah']		= $this->Admin_model->tampil_data_kecelakaan()->result_array();
 	// 	$data['data_kecamatan'] 	= $this->db->get('tb_kecamatan')->result_array();
 	// 	$this->load->vars($data);
     //     $this->load->view('admin/template/v_datakecelakaan');

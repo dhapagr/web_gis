@@ -19,8 +19,8 @@ class Berita extends CI_Controller {
 		$id_user = $this->session->userdata('id_user');		
 		// $this->load->view('admin/template/navigation_admin',$data);
 		$this->load->view('admin/template/header_admin');
-		// $data['data_kecamatan']	= $this->admin_model->tampil_data_kecamatan()->result_array();
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		// $data['data_kecamatan']	= $this->Admin_model->tampil_data_kecamatan()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
 		$data['data_berita'] 	    = $this->db->get('tb_berita')->result_array();
 		$this->load->view('admin/template/navigation_admin', $data);
 		$this->load->view('admin/berita', $data);
@@ -32,7 +32,7 @@ class Berita extends CI_Controller {
 		// $this->load->view('admin/template/navigation_admin',$data);
 		$this->load->view('admin/template/header_admin');
 		$data['dt_tag'] 	= $this->db->get('tb_tag')->result_array();
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
 		$this->load->view('admin/template/navigation_admin', $data);
 		$this->load->view('admin//template/v_addberita', $data);
 		$this->load->view('admin/template/footer_admin');
@@ -78,7 +78,7 @@ class Berita extends CI_Controller {
 		// echo "<pre>"; var_dump($data);
 		// exit;
 		$table = "tb_berita";
-		$this->admin_model->insert_table($table ,$data);
+		$this->Admin_model->insert_table($table ,$data);
 		$this->session->set_flashdata('test', 
 				'<script>swal("Sukses","Data berhasil ditambahkan","success");</script>');
 		redirect(base_url("admin/Berita"));
@@ -89,17 +89,17 @@ class Berita extends CI_Controller {
 		// $this->load->view('admin/template/navigation_admin',$data);
 		$this->load->view('admin/template/header_admin');
 		$data['dt_tag'] 			= $this->db->get('tb_tag')->result_array();
-		$test			 			= $this->admin_model->get_dtberita($id)->result_array();
+		$test			 			= $this->Admin_model->get_dtberita($id)->result_array();
 		foreach($test as $tst)
 		{
 			$select	= $tst['tag_berita'];
 		}
 		
-		$data['select']				= $this->admin_model->select($select);
+		$data['select']				= $this->Admin_model->select($select);
 		// echo "<pre>"; print_r($data['select']);
 		// exit;
-		$data['data_by_id']			= $this->admin_model->get_dtberita($id)->result_array();
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		$data['data_by_id']			= $this->Admin_model->get_dtberita($id)->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
 		$this->load->view('admin/template/navigation_admin', $data);
 		$this->load->view('admin//template/v_editberita', $data);
 		$this->load->view('admin/template/footer_admin');
@@ -205,7 +205,7 @@ class Berita extends CI_Controller {
 	function hapus($id){
 		$where = array('id_berita' => $id);
 		$this->db->delete('tb_berita', $where);
-		$this->admin_model->hapus_data($where,'tb_berita');
+		$this->Admin_model->hapus_data($where,'tb_berita');
 		$this->session->set_flashdata('test', 
 		'<script>
 			Swal.fire({

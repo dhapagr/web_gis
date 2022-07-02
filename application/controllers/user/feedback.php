@@ -26,7 +26,7 @@ class Feedback extends CI_Controller {
 		);
 
 		$table = "tb_feedback";
-		$data2 = $this->admin_model->insert_table($table, $data);
+		$data2 = $this->Admin_model->insert_table($table, $data);
 		if($data2)
 		{
 			// echo "success";

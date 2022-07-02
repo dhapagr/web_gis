@@ -18,8 +18,8 @@ class Tag extends CI_Controller {
 		$id_user = $this->session->userdata('id_user');		
 		// $this->load->view('admin/template/navigation_admin',$data);
 		$this->load->view('admin/template/header_admin');
-		// $data['data_kecamatan']	= $this->admin_model->tampil_data_kecamatan()->result_array();
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
+		// $data['data_kecamatan']	= $this->Admin_model->tampil_data_kecamatan()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
         $data['data_tag'] 	        = $this->db->get('tb_tag')->result_array();
 		$this->load->view('admin/template/navigation_admin', $data);
 		$this->load->view('admin//template/v_tag', $data);
@@ -31,7 +31,7 @@ class Tag extends CI_Controller {
 			'nama_tag' 		=> $this->input->post('tag')
         );
         $table = "tb_tag";
-		$this->admin_model->insert_table($table, $data);
+		$this->Admin_model->insert_table($table, $data);
 		$this->session->set_flashdata('test', 
         '<script>
             Swal.fire({
@@ -49,7 +49,7 @@ class Tag extends CI_Controller {
     function hapus($id){
 		$where = array('id_tag' => $id);
 		$this->db->delete('tb_tag', $where);
-		// $this->superadmin_model->hapus_data($where,'tb_user');
+		// $this->superAdmin_model->hapus_data($where,'tb_user');
 		$this->session->set_flashdata('test', 
 				'<script>
 					Swal.fire({

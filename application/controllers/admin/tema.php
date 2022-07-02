@@ -17,8 +17,8 @@ class Tema extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');	
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-        $data['tema'] 				= $this->admin_model->get_tema()->result();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+        $data['tema'] 				= $this->Admin_model->get_tema()->result();
 		$this->load->view('admin/template/navigation_admin',$data);
         $this->load->view('admin/tema', $data);
 		$this->load->view('admin/template/footer_admin');
@@ -27,10 +27,10 @@ class Tema extends CI_Controller {
 	// {
 		// 	$this->load->view('admin/template/header_admin');
 		// 	// $this->load->view('admin/template/navigation_admin');
-		// 	$data['data_lokasi'] 		= $this->admin_model->tampil_data_lokasi()->result_array();
-		// 	$data['data_kecelakaan'] 	= $this->admin_model->get_data_kecelakaan();
-		// 	$data['data_laka']			= $this->admin_model->tampil_data_kecelakaan()->result_array();
-		// 	// $data['data_by_id']			= $this->admin_model->get_dtkec()->result_array();
+		// 	$data['data_lokasi'] 		= $this->Admin_model->tampil_data_lokasi()->result_array();
+		// 	$data['data_kecelakaan'] 	= $this->Admin_model->get_data_kecelakaan();
+		// 	$data['data_laka']			= $this->Admin_model->tampil_data_kecelakaan()->result_array();
+		// 	// $data['data_by_id']			= $this->Admin_model->get_dtkec()->result_array();
 		// 	$data['data_kecamatan'] 	= $this->db->get('tb_kecamatan')->result_array();
 		// 	$data['data_kelurahan'] 	= $this->db->get('tb_kelurahan')->result_array();
 		// 	// $data['data_all'] 			= $this->db->query("SELECT * FROM tb_kecelakaan WHERE id_kecelakaan = '$id'")->result_array();

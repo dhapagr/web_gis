@@ -23,7 +23,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Admin_model');
 		$this->load->model('Superadmin_model');
-		// $this->load->model('superadmin_model');
+		// $this->load->model('Superadmin_model');
 		if ($this->session->userdata("role_user") != "superadmin") 
 		{
 			redirect('admin/Welcome');
@@ -33,10 +33,10 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$id_user = $this->session->userdata('id_user');	
-		$data['data_user']			= $this->superadmin_model->get_dataById($id_user);
-		$data['tema'] 				= $this->superadmin_model->get_tema()->result();
-		$data['dt_kecelakaan'] 		= $this->superadmin_model->tampil_data_kecelakaan()->num_rows();
-		$data['dt_kelurahan'] 		= $this->superadmin_model->tampil_data_kelurahan()->num_rows();
+		$data['data_user']			= $this->Superadmin_model->get_dataById($id_user);
+		$data['tema'] 				= $this->Superadmin_model->get_tema()->result();
+		$data['dt_kecelakaan'] 		= $this->Superadmin_model->tampil_data_kecelakaan()->num_rows();
+		$data['dt_kelurahan'] 		= $this->Superadmin_model->tampil_data_kelurahan()->num_rows();
 		$this->load->view('superadmin/template/header_admin');
 		$this->load->view('superadmin/template/navigation_admin', $data);
 		$this->load->view('superadmin/dashboard', $data);

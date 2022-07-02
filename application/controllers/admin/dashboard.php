@@ -33,9 +33,9 @@ class Dashboard extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');		
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$data['dt_kecelakaan'] 		= $this->admin_model->tampil_data_kecelakaan()->num_rows();
-		$data['dt_kelurahan'] 		= $this->admin_model->tampil_data_kelurahan()->num_rows();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$data['dt_kecelakaan'] 		= $this->Admin_model->tampil_data_kecelakaan()->num_rows();
+		$data['dt_kelurahan'] 		= $this->Admin_model->tampil_data_kelurahan()->num_rows();
 		// echo "<pre>"; var_dump($data['data_user']);
 		// exit;
 		$this->load->view('admin/template/navigation_admin',$data);
@@ -45,5 +45,5 @@ class Dashboard extends CI_Controller {
 	
 }
 		// $id_user = $this->session->userdata('id_user');		
-		// $data['data_user']			= $this->admin_model->get_dataById($id_user);
+		// $data['data_user']			= $this->Admin_model->get_dataById($id_user);
 		// $this->load->view('admin/template/navigation_admin',$data);

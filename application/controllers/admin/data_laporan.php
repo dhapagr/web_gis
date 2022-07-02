@@ -17,8 +17,8 @@ class Data_laporan extends CI_Controller {
     public function index()
 	{
 		$id_user = $this->session->userdata('id_user');		
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$pengaduan = $this->admin_model->get_pengaduan_jawab()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$pengaduan = $this->Admin_model->get_pengaduan_jawab()->result_array();
 		foreach($pengaduan as $p_aduan):
 			$dt_pengaduan[] = [
 				'id_pengaduan' 		=> $p_aduan['id_pengaduan'],
@@ -27,7 +27,7 @@ class Data_laporan extends CI_Controller {
 				'tanggal_pengaduan' => $p_aduan['tanggal_pengaduan'],
 				'jawaban' 			=> $p_aduan['jawaban'],
 				'status_pengaduan' 	=> $p_aduan['status_pengaduan'],
-				'data_user' 		=> $this->user_model->get_data_user($p_aduan['id_user']),
+				'data_user' 		=> $this->User_model->get_data_user($p_aduan['id_user']),
 			];
 		endforeach;
 		$data['dt_pengaduan'] = $dt_pengaduan;
@@ -41,8 +41,8 @@ class Data_laporan extends CI_Controller {
 	public function pengaduan_blm_jwb()
 	{
 		$id_user = $this->session->userdata('id_user');		
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$pengaduan = $this->admin_model->get_pengaduan_belum()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$pengaduan = $this->Admin_model->get_pengaduan_belum()->result_array();
 		foreach($pengaduan as $p_aduan):
 			$dt_pengaduan[] = [
 				'id_pengaduan' 		=> $p_aduan['id_pengaduan'],
@@ -51,7 +51,7 @@ class Data_laporan extends CI_Controller {
 				'tanggal_pengaduan' => $p_aduan['tanggal_pengaduan'],
 				'jawaban' 			=> $p_aduan['jawaban'],
 				'status_pengaduan' 	=> $p_aduan['status_pengaduan'],
-				'data_user' 		=> $this->user_model->get_data_user($p_aduan['id_user']),
+				'data_user' 		=> $this->User_model->get_data_user($p_aduan['id_user']),
 			];
 		endforeach;
 		$data['dt_pengaduan'] = $dt_pengaduan;
@@ -66,8 +66,8 @@ class Data_laporan extends CI_Controller {
 	public function pengaduan_blm_tambah_modal($param)
 	{
 		$id_user = $this->session->userdata('id_user');		
-		$data['data_user']			= $this->admin_model->get_dataById($id_user);
-		$pengaduan = $this->admin_model->get_pengaduan_belum()->result_array();
+		$data['data_user']			= $this->Admin_model->get_dataById($id_user);
+		$pengaduan = $this->Admin_model->get_pengaduan_belum()->result_array();
 		foreach($pengaduan as $p_aduan):
 			$dt_pengaduan[] = [
 				'id_pengaduan' 		=> $p_aduan['id_pengaduan'],
@@ -76,7 +76,7 @@ class Data_laporan extends CI_Controller {
 				'tanggal_pengaduan' => $p_aduan['tanggal_pengaduan'],
 				'jawaban' 			=> $p_aduan['jawaban'],
 				'status_pengaduan' 	=> $p_aduan['status_pengaduan'],
-				'data_user' 		=> $this->user_model->get_data_user($p_aduan['id_user']),
+				'data_user' 		=> $this->User_model->get_data_user($p_aduan['id_user']),
 			];
 		endforeach;
 		$data['dt_pengaduan'] = $dt_pengaduan;

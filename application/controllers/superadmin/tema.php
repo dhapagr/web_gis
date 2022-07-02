@@ -17,8 +17,8 @@ class Tema extends CI_Controller {
 	{
 		$id_user = $this->session->userdata('id_user');	
 		$this->load->view('admin/template/header_admin');
-		$data['data_user']			= $this->superadmin_model->get_dataById($id_user);
-        $data['tema'] 				= $this->superadmin_model->get_tema()->result();
+		$data['data_user']			= $this->Superadmin_model->get_dataById($id_user);
+        $data['tema'] 				= $this->Superadmin_model->get_tema()->result();
 		$this->load->view('superadmin/template/navigation_admin',$data);
         $this->load->view('superadmin/tema', $data);
 		$this->load->view('superadmin/template/footer_admin');

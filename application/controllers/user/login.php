@@ -39,7 +39,7 @@ class Login extends CI_Controller {
 				$this->load->view('user/login');
 				$this->load->view('user/template/footer');
 			}else{
-				$auth = $this->auth_model->cek_login_umum();
+				$auth = $this->Auth_model->cek_login_umum();
 
 				if($auth == null){
 					$this->session->set_flashdata('sukses_registrasi',

@@ -54,7 +54,7 @@ class Pengaduan extends CI_Controller {
 		$from = $this->uri->segment(4);
 		$this->pagination->initialize($config);		
 
-		$data_pengaduan = $this->user_model->get_pengaduan($config['per_page'],$from);
+		$data_pengaduan = $this->User_model->get_pengaduan($config['per_page'],$from);
 		foreach($data_pengaduan as $pengaduan):
 			$dt_pengaduan[] = array(
 				'id_pengaduan' 		=> $pengaduan['id_pengaduan'],
@@ -66,8 +66,8 @@ class Pengaduan extends CI_Controller {
 				'tanggal_jawab' 	=> $pengaduan['tanggal_jawab'],
 				'jawaban' 			=> $pengaduan['jawaban'],
 				'status_pengaduan' 	=> $pengaduan['status_pengaduan'],
-				'data_user' 		=> $this->user_model->get_data_user($pengaduan['id_user']),
-				'gambar_pengaduan'	=> $this->user_model->get_gambar_pengaduan($pengaduan['id_pengaduan']),
+				'data_user' 		=> $this->User_model->get_data_user($pengaduan['id_user']),
+				'gambar_pengaduan'	=> $this->User_model->get_gambar_pengaduan($pengaduan['id_pengaduan']),
 
 			);
 		endforeach;
